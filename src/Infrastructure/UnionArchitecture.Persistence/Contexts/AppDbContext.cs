@@ -12,5 +12,6 @@ public class AppDbContext:DbContext
 		modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatagoryConficurations).Assembly);
 		base.OnModelCreating(modelBuilder);
 	}
-	public DbSet<Catagory> Catagories { get; set; }
+
+	public DbSet<Catagory> Catagories { get; set; } = null!;
 }
