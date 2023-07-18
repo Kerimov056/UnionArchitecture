@@ -1,0 +1,17 @@
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\bin\Debug\net6.0\UnionArchitecture.Persistence.deps.json
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\bin\Debug\net6.0\UnionArchitecture.Persistence.dll
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\bin\Debug\net6.0\UnionArchitecture.Persistence.pdb
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\bin\Debug\net6.0\UnionArchitecture.Aplication.dll
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\bin\Debug\net6.0\UnionArchitecture.Domain.dll
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\bin\Debug\net6.0\UnionArchitecture.Aplication.pdb
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\bin\Debug\net6.0\UnionArchitecture.Domain.pdb
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.csproj.AssemblyReference.cache
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.AssemblyInfoInputs.cache
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.AssemblyInfo.cs
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.csproj.CoreCompileInputs.cache
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.csproj.CopyComplete
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.dll
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\refint\UnionArchitecture.Persistence.dll
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.pdb
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\ref\UnionArchitecture.Persistence.dll

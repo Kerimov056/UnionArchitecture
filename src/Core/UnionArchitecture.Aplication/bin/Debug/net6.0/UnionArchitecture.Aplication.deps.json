@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "UnionArchitecture.Aplication/1.0.0": {
+        "dependencies": {
+          "UnionArchitecture.Domain": "1.0.0"
+        },
+        "runtime": {
+          "UnionArchitecture.Aplication.dll": {}
+        }
+      },
+      "UnionArchitecture.Domain/1.0.0": {
+        "runtime": {
+          "UnionArchitecture.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "UnionArchitecture.Aplication/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnionArchitecture.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\UnionArchitecture.Aplication\UnionArchitecture.Aplication.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Implementations\Services\" />
+    <Folder Include="Implementations\Repositories\" />
+    <Folder Include="Contexts\" />
+  </ItemGroup>
+
 </Project>

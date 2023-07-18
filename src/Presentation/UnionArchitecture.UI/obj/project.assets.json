@@ -88,6 +88,42 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "UnionArchitecture.Aplication/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "UnionArchitecture.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UnionArchitecture.Aplication.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UnionArchitecture.Aplication.dll": {}
+        }
+      },
+      "UnionArchitecture.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/UnionArchitecture.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UnionArchitecture.Domain.dll": {}
+        }
+      },
+      "UnionArchitecture.Persistence/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "UnionArchitecture.Aplication": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UnionArchitecture.Persistence.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UnionArchitecture.Persistence.dll": {}
+        }
       }
     }
   },
@@ -216,11 +252,27 @@
         "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "UnionArchitecture.Aplication/1.0.0": {
+      "type": "project",
+      "path": "../../Core/UnionArchitecture.Aplication/UnionArchitecture.Aplication.csproj",
+      "msbuildProject": "../../Core/UnionArchitecture.Aplication/UnionArchitecture.Aplication.csproj"
+    },
+    "UnionArchitecture.Domain/1.0.0": {
+      "type": "project",
+      "path": "../../Core/UnionArchitecture.Domain/UnionArchitecture.Domain.csproj",
+      "msbuildProject": "../../Core/UnionArchitecture.Domain/UnionArchitecture.Domain.csproj"
+    },
+    "UnionArchitecture.Persistence/1.0.0": {
+      "type": "project",
+      "path": "../../Infrastructure/UnionArchitecture.Persistence/UnionArchitecture.Persistence.csproj",
+      "msbuildProject": "../../Infrastructure/UnionArchitecture.Persistence/UnionArchitecture.Persistence.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Swashbuckle.AspNetCore >= 6.2.3"
+      "Swashbuckle.AspNetCore >= 6.2.3",
+      "UnionArchitecture.Persistence >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -249,7 +301,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj": {
+              "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
