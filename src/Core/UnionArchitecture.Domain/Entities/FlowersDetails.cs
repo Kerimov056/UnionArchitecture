@@ -10,7 +10,6 @@ public class FlowersDetails:BaseEntity
     public double Weight { get; set; }
     public string PowerFlowers { get; set; }
 
-    // SALAM ULVI
     public int FlowersId { get; set; }
     public Flowers Flowers { get; set; }
     public List<FlowersImage> Images { get; set; }
