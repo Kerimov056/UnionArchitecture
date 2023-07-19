@@ -16,18 +16,18 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity, new()
 
     public IQueryable<T> GetAll(bool isTracking = true, params string[] inculdes)
     {
-        var query = Table.AsQueryable();
-        foreach (var inculde in inculdes)
+        var query = Table.AsQueryable();   // burda evelce biz Table olduguna gore table'i query'ye beraberlesdirik sonra
+        foreach (var inculde in inculdes)  // burda ise params'di yeni bir cox inculde gelir ve rahatca foreach'de inculdelari dondurub bir bir hamisin inculde edirik
         {
             query.Include(inculde);
         }
-        return isTracking ? query: query.AsNoTracking();
+        return isTracking ? query: query.AsNoTracking();  // burda ise isTracking true'dursa query deyilse AsNoTracking()
     }
 
     public IQueryable<T> GetAllExpression(Expression<Func<T, bool>> expression, int Skip, int Take, bool isTracking = true, params string[] inculdes)
     {
         var query = Table.Where(expression).Skip(Skip).Take(Take).AsQueryable();
-        foreach (var inculdue in inculdes)
+        foreach (var inculdue in inculdes)  // 1 ustdeki ile eynidir yalniz ferqi gelen Skip ve Take'dir
         {
             query.Include(inculdue);
         }
@@ -36,11 +36,11 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity, new()
 
     public IQueryable<T> GetAllExpressionOrderBy(Expression<Func<T, bool>> expression, int Skip, int Take, Expression<Func<T, object>> expressionOrder, bool isOrdered = true, bool isTracking = true, params string[] inculdes)
     {
-        var query = Table.Where(expression).AsQueryable();
+        var query = Table.Where(expression).AsQueryable(); 
         query = isOrdered ? query.OrderBy(expressionOrder) : query.OrderByDescending(expressionOrder);
-        query = query.Skip(Skip).Take(Take);  
+        query = query.Skip(Skip).Take(Take);  // bununda bir usedeki ile ferqi isOrderedd'di eger isOrdered trudursa orderby etsin deyilse orderbydesencding
         foreach (var inculde in inculdes)
-        {
+        {                            
             query.Include(inculde);
         }
         return isTracking ? query : query.AsNoTracking();
@@ -48,11 +48,11 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity, new()
 
     public  async Task<T?> GetByIdAsync(Guid id)
     {
-        return await Table.FindAsync(id);
+        return await Table.FindAsync(id);  // sadece tapibgonderirik
     }
     public async Task<T?> GetByIdAsyncExpression(Expression<Func<T, bool>> expression, bool isTracking = true)
     {
-        var query = isTracking ? Table.AsQueryable() : Table.AsNoTracking();
+        var query = isTracking ? Table.AsQueryable() : Table.AsNoTracking(); // burdada eynidir yalniz bir ferq  evvelden biz queryni yazib sonra axtaririrq
         return await query.FirstOrDefaultAsync(expression);
     }
 }
