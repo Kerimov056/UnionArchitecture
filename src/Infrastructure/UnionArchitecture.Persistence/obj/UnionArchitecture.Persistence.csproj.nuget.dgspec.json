@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj": {}
+    "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj": {}
   },
   "projects": {
-    "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj": {
+    "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj",
+        "projectUniqueName": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj",
         "projectName": "UnionArchitecture.Aplication",
-        "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj",
-        "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\obj\\",
+        "projectPath": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj",
+        "packagesPath": "C:\\Users\\Rhabi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Aplication\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rhabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj": {
-                "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj"
+              "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj": {
+                "projectPath": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj"
               }
             }
           }
@@ -75,21 +79,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj": {
+    "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
         "projectName": "UnionArchitecture.Domain",
-        "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
-        "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
+        "packagesPath": "C:\\Users\\Rhabi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rhabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -146,21 +154,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj": {
+    "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
         "projectName": "UnionArchitecture.Persistence",
-        "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
-        "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\obj\\",
+        "projectPath": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
+        "packagesPath": "C:\\Users\\Rhabi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Infrastructure\\UnionArchitecture.Persistence\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rhabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -174,8 +186,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj": {
-                "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj"
+              "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj": {
+                "projectPath": "C:\\Users\\Rhabi\\OneDrive\\Desktop\\Test\\UnionArchitecture\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj"
               }
             }
           }
@@ -221,7 +233,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
