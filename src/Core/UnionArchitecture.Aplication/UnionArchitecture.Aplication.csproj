@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Abstraction\Services\" />
-    <Folder Include="Abstraction\Repository\" />
     <Folder Include="DTOs\" />
   </ItemGroup>
 
