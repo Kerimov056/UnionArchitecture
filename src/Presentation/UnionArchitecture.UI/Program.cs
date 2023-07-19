@@ -1,15 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using UnionArchitecture.Persistence.Contexts;
+using UnionArchitecture.Persistence.ExtensionsMethods;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
-});
+builder.Services.AddPersistenceServices();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
