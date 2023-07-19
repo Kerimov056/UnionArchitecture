@@ -10,7 +10,7 @@ public class Flowers:BaseEntity
 
     //RelathionsShip
     public FlowersDetails FlowersDetails { get; set; }
-    public int CatagoryId { get; set; }
+    public Guid CatagoryId { get; set; }
     public Catagory Catagory { get; set; }
 
 }
