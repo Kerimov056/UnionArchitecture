@@ -7,6 +7,6 @@ public class FlowersImage:BaseEntity
     public string ImagePath { get; set; }
 
     //RelathionsShip
-    public int FlowersDetailsId { get; set; }
+    public Guid FlowersDetailsId { get; set; }
     public FlowersDetails FlowersDetails { get; set; }
 }
