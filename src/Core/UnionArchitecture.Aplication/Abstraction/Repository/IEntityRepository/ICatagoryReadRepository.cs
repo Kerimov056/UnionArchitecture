@@ -2,6 +2,6 @@
 
 namespace UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 
-internal interface ICatagoryReadRepository : IReadRepository<Catagory>
+public interface ICatagoryReadRepository : IReadRepository<Catagory>
 {
 }

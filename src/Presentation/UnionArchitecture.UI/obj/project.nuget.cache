@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "uh+busyveocrCdgATy2nG9t1bCNPYjOC9gUeok0xEI/DDZikybiyvKecPyIriwoEXDCMQ0NO9c2vZdjsOe8ecQ==",
+  "dgSpecHash": "5gXtC1uQsacaHNqQh+n9v/TmELwztXE32PGf8mPpVbNe1XZMsp9GDy0HTIkiajfRG7feiR+F7pWgmWySe6srXw==",
   "success": true,
   "projectFilePath": "D:\\work2\\Asp.Net API\\UnionArchitecture\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Legion\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\Legion\\.nuget\\packages\\fluentvalidation\\11.6.0\\fluentvalidation.11.6.0.nupkg.sha512",
+    "C:\\Users\\Legion\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.6.0\\fluentvalidation.dependencyinjectionextensions.11.6.0.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
