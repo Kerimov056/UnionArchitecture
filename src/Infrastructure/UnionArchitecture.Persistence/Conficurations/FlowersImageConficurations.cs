@@ -1,13 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using UnionArchitecture.Domain.Entities;
+﻿//using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore.Metadata.Builders;
+//using UnionArchitecture.Domain.Entities;
 
-namespace UnionArchitecture.Persistence.Conficurations;
+//namespace UnionArchitecture.Persistence.Conficurations;
 
-public class FlowersImageConficurations : IEntityTypeConfiguration<FlowersImage>
-{
-    public void Configure(EntityTypeBuilder<FlowersImage> builder)
-    {
-        builder.Property(x => x.ImagePath).IsRequired().HasMaxLength(504);
-    }
-}
+//public class FlowersImageConficurations : IEntityTypeConfiguration<FlowersImage>
+//{
+//    public void Configure(EntityTypeBuilder<FlowersImage> builder)
+//    {
+//        builder.Property(x => x.ImagePath).IsRequired().HasMaxLength(504);
+//    }
+//}

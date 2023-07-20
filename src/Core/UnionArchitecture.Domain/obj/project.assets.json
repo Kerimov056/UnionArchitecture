@@ -2018,11 +2018,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
       "projectName": "UnionArchitecture.Domain",
-      "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
+      "projectPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
       "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-      "outputPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",

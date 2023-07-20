@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 using System.Reflection.Emit;
 using System.Reflection.Metadata;
+using UnionArchitecture.Aplication.Abstraction.Services;
+using UnionArchitecture.Aplication.DTOs.Catagory;
 using UnionArchitecture.Domain.Entities;
 using UnionArchitecture.Persistence.Contexts;
 
@@ -11,25 +14,39 @@ namespace UnionArchitecture.UI.Controllers;
 [ApiController]
 public class CatagoriesController : ControllerBase
 {
-    private readonly AppDbContext _appDbContext;
-    public CatagoriesController(AppDbContext appDbContext)
+    private readonly ICatagoryService _catagoryService;
+
+    public CatagoriesController(ICatagoryService catagoryService)
     {
-        _appDbContext = appDbContext;
+        _catagoryService = catagoryService;
     }
 
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var catagory = new Catagory()
-        {
-            Name = "Gulum",
-            Description = "iyle metanet gulu iyle"
-        };
-
-        //await _appDbContext.Catagories.AddAsync(catagory);
-        //await _appDbContext.SaveChangesAsync();
-
-        //var result = _appDbContext.Catagories.ToListAsync();
-        return Ok(catagory);
+        var query = _catagoryService.GetAll();
+        return Ok(query);
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Post(Catagory catagory)
+    {
+        await _catagoryService.AddAsync(catagory);
+        return StatusCode((int)HttpStatusCode.Created);
+    }
+
+    [HttpDelete("{catagoryId:Guid}")]
+    public async Task<IActionResult> Remove(string catagoryId)
+    {
+        await _catagoryService.RemoveAsync(catagoryId);
+        return Ok();
+    }
+
+    [HttpPut("{catagoryId:Guid}")]
+    public async Task<IActionResult> Update(Guid catagoryId, [FromBody] CatagoryUpdateDTO catagoryUpdateDTO)
+    {
+        await _catagoryService.UpdateAsync(catagoryId,catagoryUpdateDTO);
+        return Ok();
+    }
+
 }

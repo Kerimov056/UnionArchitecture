@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj": {}
+    "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj": {}
   },
   "projects": {
-    "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj": {
+    "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj",
+        "projectUniqueName": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj",
         "projectName": "UnionArchitecture.Aplication",
-        "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj",
+        "projectPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj",
         "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\obj\\",
+        "outputPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj": {
-                "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj"
+              "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj": {
+                "projectPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj"
               }
             }
           }
@@ -44,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.20, )"
@@ -79,14 +83,14 @@
         }
       }
     },
-    "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj": {
+    "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
         "projectName": "UnionArchitecture.Domain",
-        "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
+        "projectPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
         "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -150,14 +154,14 @@
         }
       }
     },
-    "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj": {
+    "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
         "projectName": "UnionArchitecture.Persistence",
-        "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
+        "projectPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
         "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\obj\\",
+        "outputPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -174,8 +178,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj": {
-                "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj"
+              "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj": {
+                "projectPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj"
               }
             }
           }
@@ -190,6 +194,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.20, )"
@@ -225,14 +237,14 @@
         }
       }
     },
-    "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj": {
+    "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj",
+        "projectUniqueName": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj",
         "projectName": "UnionArchitecture.UI",
-        "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj",
+        "projectPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj",
         "packagesPath": "C:\\Users\\Legion\\.nuget\\packages\\",
-        "outputPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\obj\\",
+        "outputPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Legion\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -249,8 +261,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj": {
-                "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj"
+              "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj": {
+                "projectPath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj"
               }
             }
           }
@@ -265,6 +277,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.20, )"

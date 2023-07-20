@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "GE0f2h2rhXO6xti5QhcSI5bcrfOH+Wx7l+fX5qCjWjOGuvZR/4M987njpZdTRd86WZBeYQ0KPoNL2iTES+/KMA==",
+  "dgSpecHash": "YXgf8FXdYCcyuQEA2MXPhK57WZX3ZtOjmVZPJtpfrlN+vklQ1/yTrpEy320l8rIjqp7uAdpd/RbUBgGfmNp05A==",
   "success": true,
-  "projectFilePath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
+  "projectFilePath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Legion\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Legion\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\Legion\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Legion\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.20\\microsoft.entityframeworkcore.6.0.20.nupkg.sha512",

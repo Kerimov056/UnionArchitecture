@@ -19,7 +19,7 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity, new()
         var query = Table.AsQueryable();   // burda evelce biz Table olduguna gore table'i query'ye beraberlesdirik sonra
         foreach (var inculde in inculdes)  // burda ise params'di yeni bir cox inculde gelir ve rahatca foreach'de inculdelari dondurub bir bir hamisin inculde edirik
         {
-            query.Include(inculde);
+            query = query.Include(inculde);
         }
         return isTracking ? query: query.AsNoTracking();  // burda ise isTracking true'dursa query deyilse AsNoTracking()
     }
@@ -27,9 +27,9 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity, new()
     public IQueryable<T> GetAllExpression(Expression<Func<T, bool>> expression, int Skip, int Take, bool isTracking = true, params string[] inculdes)
     {
         var query = Table.Where(expression).Skip(Skip).Take(Take).AsQueryable();
-        foreach (var inculdue in inculdes)  // 1 ustdeki ile eynidir yalniz ferqi gelen Skip ve Take'dir
+        foreach (var include in inculdes)  // 1 ustdeki ile eynidir yalniz ferqi gelen Skip ve Take'dir
         {
-            query.Include(inculdue);
+            query = query.Include(include);
         }
         return isTracking ? query : query.AsNoTracking();
     }
@@ -39,16 +39,17 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity, new()
         var query = Table.Where(expression).AsQueryable(); 
         query = isOrdered ? query.OrderBy(expressionOrder) : query.OrderByDescending(expressionOrder);
         query = query.Skip(Skip).Take(Take);  // bununda bir usedeki ile ferqi isOrderedd'di eger isOrdered trudursa orderby etsin deyilse orderbydesencding
-        foreach (var inculde in inculdes)
-        {                            
-            query.Include(inculde);
+            foreach (var inculde in inculdes)
+            {
+            query = query.Include(inculde);
         }
-        return isTracking ? query : query.AsNoTracking();
+            return isTracking ? query : query.AsNoTracking();
     }
 
-    public  async Task<T?> GetByIdAsync(Guid id)
+    public async Task<T> GetByIdAsync(Guid id)
     {
-        return await Table.FindAsync(id);  // sadece tapibgonderirik
+        var category = await Table.FindAsync(id);
+        return category;   // sadece tapib gonderirik
     }
     public async Task<T?> GetByIdAsyncExpression(Expression<Func<T, bool>> expression, bool isTracking = true)
     {
