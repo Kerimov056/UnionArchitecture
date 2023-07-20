@@ -21,12 +21,12 @@ public class CatagoriesController : ControllerBase
         _catagoryService = catagoryService;
     }
 
-    //[HttpGet]
-    //public async Task<IActionResult> Get()
-    //{
-    //    var query = _catagoryService.GetAll();
-    //    return Ok(query);
-    //}
+    [HttpGet]
+    public async Task<IActionResult> Get()
+    {
+        var query = await _catagoryService.GetAllAsync();
+        return Ok(query);
+    }
 
     //[HttpPost]
     //public async Task<IActionResult> Post(Catagory catagory)
@@ -45,7 +45,7 @@ public class CatagoriesController : ControllerBase
     //[HttpPut("{catagoryId:Guid}")]
     //public async Task<IActionResult> Update(Guid catagoryId, [FromBody] CatagoryUpdateDTO catagoryUpdateDTO)
     //{
-    //    await _catagoryService.UpdateAsync(catagoryId,catagoryUpdateDTO);
+    //    await _catagoryService.UpdateAsync(catagoryId, catagoryUpdateDTO);
     //    return Ok();
     //}
 

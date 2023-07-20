@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using UnionArchitecture.Aplication.Abstraction.Repository;
 using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
@@ -26,14 +27,17 @@ public class CatagoryService : ICatagoryService
         Catagory? catagory = await _CatagoryReadRepository
              .GetByIdAsyncExpression(c => c.Name.ToLower().Equals(catagoryCreateDTO.name));
         if (catagory is not null) throw new DublicatedException("Dubilcated Catagory Name!");
-        
+        Catagory newCatagory = _mapper.Map<Catagory>(catagoryCreateDTO);
+        await _CatagoryWriteRepository.AddAsync(newCatagory);
+        await _CatagoryWriteRepository.SaveChangeAsync();
     }
 
-    public Task<List<CatagoryGetDTO>> GetAllAsync()
+    public async Task<List<CatagoryGetDTO>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var catagories = await _CatagoryReadRepository.GetAll().ToListAsync();
+        var catagoryGetDTOs = _mapper.Map<List<CatagoryGetDTO>>(catagories);
+        return catagoryGetDTOs;
     }
-
     public Task<CatagoryGetDTO> GetByIdAsync(string Id)
     {
         throw new NotImplementedException();

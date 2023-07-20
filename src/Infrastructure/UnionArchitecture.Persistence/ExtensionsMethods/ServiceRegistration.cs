@@ -18,11 +18,12 @@ namespace UnionArchitecture.Persistence.ExtensionsMethods;
 public static class ServiceRegistration // burda butun serviceleri yazib program.cs'de yalniz methodun adini tanidiriq
 {
     public static void AddPersistenceServices(this IServiceCollection services)
-    {
+    {   //DataBase
         services.AddDbContext<AppDbContext>(options =>
         {
             options.UseSqlServer(services.BuildServiceProvider().GetService<IConfiguration>().GetConnectionString("Default"));
         });
+
         //Validators
         services.AddFluentValidationAutoValidation();
         services.AddFluentValidationClientsideAdapters();
@@ -32,6 +33,9 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddAutoMapper(typeof(CatagoryProfile).Assembly);
 
         //Repository
+        //services.AddScoped(typeof(IReadRepository<>),typeof(ReadRepository<>));
+        //services.AddScoped(typeof(IWriteRepository<>),typeof(WriteRepository<>));
+
         services.AddScoped<ICatagoryReadRepository, CatagoryReadRepository>();
         services.AddScoped<ICatagoryWriteRepository, CatagoryWriteRepository>();
 
