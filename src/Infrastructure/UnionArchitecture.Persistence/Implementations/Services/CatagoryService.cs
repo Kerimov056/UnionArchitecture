@@ -26,7 +26,7 @@ public class CatagoryService : ICatagoryService
         Catagory? catagory = await _CatagoryReadRepository
              .GetByIdAsyncExpression(c => c.Name.ToLower().Equals(catagoryCreateDTO.name));
         if (catagory is not null) throw new DublicatedException("Dubilcated Catagory Name!");
-
+        
     }
 
     public Task<List<CatagoryGetDTO>> GetAllAsync()

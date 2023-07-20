@@ -1,11 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UnionArchitecture.Aplication.Abstraction.Repository;
+using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
+using UnionArchitecture.Aplication.Validators.CatagoryValidators;
 using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.Implementations.Repositories;
+using UnionArchitecture.Persistence.Implementations.Repositories.EntityRepository;
 using UnionArchitecture.Persistence.Implementations.Services;
+using UnionArchitecture.Persistence.MapperProfiles;
 
 namespace UnionArchitecture.Persistence.ExtensionsMethods;
 
@@ -17,8 +23,19 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         {
             options.UseSqlServer(services.BuildServiceProvider().GetService<IConfiguration>().GetConnectionString("Default"));
         });
-        services.AddScoped(typeof(IReadRepository<>),typeof(ReadRepository<>));
-        services.AddScoped(typeof(IWriteRepository<>),typeof(WriteRepository<>));
+        //Validators
+        services.AddFluentValidationAutoValidation();
+        services.AddFluentValidationClientsideAdapters();
+        services.AddValidatorsFromAssemblyContaining(typeof(CatagoryCreateDTOValidator));
+
+        //AutoMapper
+        services.AddAutoMapper(typeof(CatagoryProfile).Assembly);
+
+        //Repository
+        services.AddScoped<ICatagoryReadRepository, CatagoryReadRepository>();
+        services.AddScoped<ICatagoryWriteRepository, CatagoryWriteRepository>();
+
+        //Services
         services.AddScoped<ICatagoryService, CatagoryService>();
     }
 }
