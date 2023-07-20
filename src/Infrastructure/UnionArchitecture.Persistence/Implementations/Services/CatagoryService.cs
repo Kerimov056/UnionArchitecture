@@ -8,55 +8,28 @@ namespace UnionArchitecture.Persistence.Implementations.Services;
 
 public class CatagoryService : ICatagoryService
 {
-    private readonly IReadRepository<Catagory> _readRepository;
-    private readonly IWriteRepository<Catagory> _writeRepository;
-    //private readonly IMapper _mapper;
-    public CatagoryService(
-        IReadRepository<Catagory> readRepository,
-        IWriteRepository<Catagory> writeRepository)
+    public Task CreateAsync(CatagoryCreateDTO catagoryCreateDTO)
     {
-        _readRepository = readRepository;
-        _writeRepository = writeRepository;
-        //_mapper = mapper;
-    }
-    public IQueryable<Catagory> GetAll()
-    {
-        var query = _readRepository.GetAll();
-        return query;
+        throw new NotImplementedException();
     }
 
-    public async Task AddAsync(Catagory catagory)
+    public Task<List<CatagoryGetDTO>> GetAllAsync()
     {
-        if (catagory is null) throw new NullReferenceException();
-        await _writeRepository.AddAsync(catagory);
-        await _writeRepository.SaveChangeAsync();   
-
+        throw new NotImplementedException();
     }
 
-    public async Task RemoveAsync(string id)
+    public Task<CatagoryGetDTO> GetByIdAsync(string Id)
     {
-        var catagory = await _readRepository.GetByIdAsync(new Guid(id)
-);
-        if (catagory is not null)
-        {
-            _writeRepository.Remove(catagory);
-            await _writeRepository.SaveChangeAsync();
-        }
+        throw new NotImplementedException();
     }
 
-    public async Task UpdateAsync(Guid id, CatagoryUpdateDTO catagoryUpdateDTO)
+    public Task RemoveAsync(string id)
     {
-        if (catagoryUpdateDTO is null) throw new NullReferenceException();
-        var catagory = await _readRepository.GetByIdAsync(id);
-        if (catagory is null) throw new NullReferenceException();
+        throw new NotImplementedException();
+    }
 
-        //var obj = _mapper.Map<Catagory>(catagoryUpdateDTO);
-        Catagory obj = new()
-        {
-            Name = catagoryUpdateDTO.Name,
-            Description = catagoryUpdateDTO.Description
-        };
-        _writeRepository.Update(obj);
-        await _writeRepository.SaveChangeAsync();
+    public Task UpdateAsync(string id, CatagoryUpdateDTO catagoryUpdateDTO)
+    {
+        throw new NotImplementedException();
     }
 }

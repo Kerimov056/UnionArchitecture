@@ -5,8 +5,9 @@ namespace UnionArchitecture.Aplication.Abstraction.Services;
 
 public interface ICatagoryService
 {
-    IQueryable<Catagory> GetAll();
-    Task AddAsync(Catagory catagory);
+    Task<List<CatagoryGetDTO>> GetAllAsync();
+    Task CreateAsync(CatagoryCreateDTO catagoryCreateDTO);
+    Task<CatagoryGetDTO> GetByIdAsync(string Id);
+    Task UpdateAsync(string id, CatagoryUpdateDTO catagoryUpdateDTO);
     Task RemoveAsync(string id);
-    Task UpdateAsync(Guid id,CatagoryUpdateDTO catagoryUpdateDTO);
 }
