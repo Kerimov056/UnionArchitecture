@@ -74,3 +74,13 @@ D:\work2\Asp.Net API\UnionArchitecture.API\src\Presentation\UnionArchitecture.UI
 D:\work2\Asp.Net API\UnionArchitecture.API\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\work2\Asp.Net API\UnionArchitecture.API\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\AutoMapper.dll
 D:\work2\Asp.Net API\UnionArchitecture.API\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.csproj.AssemblyReference.cache
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.GeneratedMSBuildEditorConfig.editorconfig
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.AssemblyInfoInputs.cache
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.AssemblyInfo.cs
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.csproj.CoreCompileInputs.cache
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.MvcApplicationPartsAssemblyInfo.cs
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.MvcApplicationPartsAssemblyInfo.cache
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\refint\UnionArchitecture.UI.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.pdb

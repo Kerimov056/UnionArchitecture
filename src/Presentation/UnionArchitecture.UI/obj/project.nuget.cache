@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "a4071ThDzid3MUbMWxLhxkUBNb969JjfOtGeKZ+O+E6vhsvsE0iM5WHEMyNEE39eXbq6t442rPOW0iBAvkMt4Q==",
+  "dgSpecHash": "uh+busyveocrCdgATy2nG9t1bCNPYjOC9gUeok0xEI/DDZikybiyvKecPyIriwoEXDCMQ0NO9c2vZdjsOe8ecQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj",
+  "projectFilePath": "D:\\work2\\Asp.Net API\\UnionArchitecture\\src\\Presentation\\UnionArchitecture.UI\\UnionArchitecture.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Legion\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

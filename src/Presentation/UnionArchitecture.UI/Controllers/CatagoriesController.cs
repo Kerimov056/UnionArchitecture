@@ -21,32 +21,32 @@ public class CatagoriesController : ControllerBase
         _catagoryService = catagoryService;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> Get()
-    {
-        var query = _catagoryService.GetAll();
-        return Ok(query);
-    }
+    //[HttpGet]
+    //public async Task<IActionResult> Get()
+    //{
+    //    var query = _catagoryService.GetAll();
+    //    return Ok(query);
+    //}
 
-    [HttpPost]
-    public async Task<IActionResult> Post(Catagory catagory)
-    {
-        await _catagoryService.AddAsync(catagory);
-        return StatusCode((int)HttpStatusCode.Created);
-    }
+    //[HttpPost]
+    //public async Task<IActionResult> Post(Catagory catagory)
+    //{
+    //    await _catagoryService.AddAsync(catagory);
+    //    return StatusCode((int)HttpStatusCode.Created);
+    //}
 
-    [HttpDelete("{catagoryId:Guid}")]
-    public async Task<IActionResult> Remove(string catagoryId)
-    {
-        await _catagoryService.RemoveAsync(catagoryId);
-        return Ok();
-    }
+    //[HttpDelete("{catagoryId:Guid}")]
+    //public async Task<IActionResult> Remove(string catagoryId)
+    //{
+    //    await _catagoryService.RemoveAsync(catagoryId);
+    //    return Ok();
+    //}
 
-    [HttpPut("{catagoryId:Guid}")]
-    public async Task<IActionResult> Update(Guid catagoryId, [FromBody] CatagoryUpdateDTO catagoryUpdateDTO)
-    {
-        await _catagoryService.UpdateAsync(catagoryId,catagoryUpdateDTO);
-        return Ok();
-    }
+    //[HttpPut("{catagoryId:Guid}")]
+    //public async Task<IActionResult> Update(Guid catagoryId, [FromBody] CatagoryUpdateDTO catagoryUpdateDTO)
+    //{
+    //    await _catagoryService.UpdateAsync(catagoryId,catagoryUpdateDTO);
+    //    return Ok();
+    //}
 
 }

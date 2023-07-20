@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YXgf8FXdYCcyuQEA2MXPhK57WZX3ZtOjmVZPJtpfrlN+vklQ1/yTrpEy320l8rIjqp7uAdpd/RbUBgGfmNp05A==",
+  "dgSpecHash": "GZ5cEMmuikK1rWyvuS2OYdQeybs96IW/ZjlHSfZufLM0T/lXC8Pbz6ryugOyf5yIv2TgiY2X0EP+myJWZ/K3Rg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
+  "projectFilePath": "D:\\work2\\Asp.Net API\\UnionArchitecture\\src\\Infrastructure\\UnionArchitecture.Persistence\\UnionArchitecture.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Legion\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

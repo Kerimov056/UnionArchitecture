@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DvX1i96UZx+4eUoSwobDYO/i9Sdswi0v8xKT7wNHzDWvv0UUYoaTpFCfn7q4iexHtlkAQXa/RWDIWtE0Yf2hjA==",
+  "dgSpecHash": "anCzIxJuRrzKfQINIDIIeFJdw/+qTOFjNbK2YYQwAvS5sPyIgP6Qoo77LXG/gvMymP8I8MEvgaPGWmb3eHPRVg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
+  "projectFilePath": "D:\\work2\\Asp.Net API\\UnionArchitecture\\src\\Core\\UnionArchitecture.Domain\\UnionArchitecture.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Legion\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
