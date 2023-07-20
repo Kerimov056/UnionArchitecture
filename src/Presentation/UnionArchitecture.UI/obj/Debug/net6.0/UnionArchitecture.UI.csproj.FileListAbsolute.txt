@@ -152,3 +152,4 @@ D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.csproj.CopyComplete
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.genruntimeconfig.cache
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\ref\UnionArchitecture.UI.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
