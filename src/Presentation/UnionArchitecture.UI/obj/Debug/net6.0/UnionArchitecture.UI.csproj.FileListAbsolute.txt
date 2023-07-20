@@ -72,3 +72,5 @@ D:\work2\Asp.Net API\UnionArchitecture.API\src\Presentation\UnionArchitecture.UI
 D:\work2\Asp.Net API\UnionArchitecture.API\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\work2\Asp.Net API\UnionArchitecture.API\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Humanizer.dll
 D:\work2\Asp.Net API\UnionArchitecture.API\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\AutoMapper.dll
+D:\work2\Asp.Net API\UnionArchitecture.API\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

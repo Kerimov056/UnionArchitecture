@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Qq1aIQqyRGYIKz0dSIZ1HKcS1EC/U8AohbbtLyYuDt5MbtZNYxjUWeEY5K56HwM5yv4NxqQh+Sc3pV5l/oNuDA==",
+  "dgSpecHash": "7YtDYwGLuuqyjz+WRwP1pHlj9N9kri3ufFnUWi/xUSdeSdcllwkav2rYKA+B26FUbtjQOl2gAfvkBF9x3PXbJg==",
   "success": true,
-  "projectFilePath": "D:\\work2\\Asp.Net API\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj",
+  "projectFilePath": "C:\\Users\\Legion\\Desktop\\UnionArchitecture.API\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Legion\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\Legion\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Legion\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\Legion\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.20\\microsoft.entityframeworkcore.6.0.20.nupkg.sha512",

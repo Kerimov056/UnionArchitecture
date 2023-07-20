@@ -2,8 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UnionArchitecture.Aplication.Abstraction.Repository;
+using UnionArchitecture.Aplication.Abstraction.Services;
 using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.Implementations.Repositories;
+using UnionArchitecture.Persistence.Implementations.Services;
 
 namespace UnionArchitecture.Persistence.ExtensionsMethods;
 
@@ -16,6 +18,7 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
             options.UseSqlServer(services.BuildServiceProvider().GetService<IConfiguration>().GetConnectionString("Default"));
         });
         services.AddScoped(typeof(IReadRepository<>),typeof(ReadRepository<>));
-        services.AddScoped(typeof(IWriteRepository<>),typeof(WriteRepository<>)); 
+        services.AddScoped(typeof(IWriteRepository<>),typeof(WriteRepository<>));
+        services.AddScoped<ICatagoryService, CatagoryService>();
     }
 }
