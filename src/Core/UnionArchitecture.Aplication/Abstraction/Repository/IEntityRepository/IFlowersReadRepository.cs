@@ -2,6 +2,7 @@
 
 namespace UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 
-public interface IFlowersReadRepository:IReadRepository<Flowers>
+public interface IFlowersReadRepository : IReadRepository<Flowers>
 {
+
 }
