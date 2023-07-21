@@ -53,6 +53,11 @@ public class CatagoriesController : ControllerBase
         return StatusCode((int)HttpStatusCode.Created);
     }
 
+    /// <summary>
+    /// Remove Catagory id
+    /// </summary>
+    /// <param name="catagoryId"></param>
+    /// <returns></returns>
     [HttpDelete("{catagoryId:Guid}")]
     public async Task<IActionResult> Remove(Guid catagoryId)
     {
@@ -60,6 +65,12 @@ public class CatagoriesController : ControllerBase
         return Ok();
     }
 
+    /// <summary>
+    /// Update Catagory Id
+    /// </summary>
+    /// <param name="catagoryId"></param>
+    /// <param name="catagoryUpdateDTO"></param>
+    /// <returns></returns>
     [HttpPut("{catagoryId:Guid}")]
     public async Task<IActionResult> Update(Guid catagoryId, [FromBody] CatagoryUpdateDTO catagoryUpdateDTO)
     {

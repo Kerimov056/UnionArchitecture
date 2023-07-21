@@ -12,18 +12,6 @@ public class CatagoryConficurations : IEntityTypeConfiguration<Catagory>
         builder.Property(x => x.Description).IsRequired(false).HasMaxLength(500);
 
         
-
-        //builder.HasData(
-        //    new Catagory{
-        //        Name= "Name",
-        //        Description= "Description",
-        //    },
-        //    new Catagory
-        //    {
-        //        Name= "Papatya",
-        //        Description= "Descr",
-        //    } 
-        //    );
     }
 
 }

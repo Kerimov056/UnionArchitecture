@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.ExtensionsMethods;
+using UnionArchitecture.UI.Middelewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UserCustomExceptionHandler();
 
 app.UseHttpsRedirection();
 

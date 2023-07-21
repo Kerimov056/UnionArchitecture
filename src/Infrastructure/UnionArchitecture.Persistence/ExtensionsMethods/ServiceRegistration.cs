@@ -33,13 +33,13 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddAutoMapper(typeof(CatagoryProfile).Assembly);
 
         //Repository
-        //services.AddScoped(typeof(IReadRepository<>),typeof(ReadRepository<>));
-        //services.AddScoped(typeof(IWriteRepository<>),typeof(WriteRepository<>));
-
         services.AddScoped<ICatagoryReadRepository, CatagoryReadRepository>();
         services.AddScoped<ICatagoryWriteRepository, CatagoryWriteRepository>();
+        services.AddScoped<IFlowersReadRepository, FlowersReadRepository>();
+        services.AddScoped<IFlowersWriteRepository, FlowersWriteRepository>();
 
         //Services
         services.AddScoped<ICatagoryService, CatagoryService>();
+        services.AddScoped<IFlowerService, FlowerService>();
     }
 }

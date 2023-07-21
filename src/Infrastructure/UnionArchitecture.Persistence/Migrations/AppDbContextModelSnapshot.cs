@@ -50,6 +50,159 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.ToTable("Catagories");
                 });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flowers", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CatagoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CatagoryId");
+
+                    b.ToTable("Flowers");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.FlowersDetails", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("FlowersId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PowerFlowers")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SKU")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tags")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Weight")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlowersId")
+                        .IsUnique();
+
+                    b.ToTable("FlowersDetails");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.FlowersImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("FlowersDetailsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlowersDetailsId");
+
+                    b.ToTable("FlowersImages");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flowers", b =>
+                {
+                    b.HasOne("UnionArchitecture.Domain.Entities.Catagory", "Catagory")
+                        .WithMany()
+                        .HasForeignKey("CatagoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Catagory");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.FlowersDetails", b =>
+                {
+                    b.HasOne("UnionArchitecture.Domain.Entities.Flowers", "Flowers")
+                        .WithOne("FlowersDetails")
+                        .HasForeignKey("UnionArchitecture.Domain.Entities.FlowersDetails", "FlowersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Flowers");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.FlowersImage", b =>
+                {
+                    b.HasOne("UnionArchitecture.Domain.Entities.FlowersDetails", "FlowersDetails")
+                        .WithMany("Images")
+                        .HasForeignKey("FlowersDetailsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FlowersDetails");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flowers", b =>
+                {
+                    b.Navigation("FlowersDetails")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.FlowersDetails", b =>
+                {
+                    b.Navigation("Images");
+                });
 #pragma warning restore 612, 618
         }
     }
