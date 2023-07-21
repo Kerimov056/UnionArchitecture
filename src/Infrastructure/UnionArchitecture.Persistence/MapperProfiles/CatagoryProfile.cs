@@ -13,3 +13,4 @@ public class CatagoryProfile:Profile
 		CreateMap<Catagory,CatagoryUpdateDTO>().ReverseMap();
 	}
 }
+

@@ -15,38 +15,56 @@ namespace UnionArchitecture.UI.Controllers;
 public class CatagoriesController : ControllerBase
 {
     private readonly ICatagoryService _catagoryService;
+    public CatagoriesController(ICatagoryService catagoryService) => _catagoryService = catagoryService;
 
-    public CatagoriesController(ICatagoryService catagoryService)
-    {
-        _catagoryService = catagoryService;
-    }
 
+    /// <summary>
+    /// Catagory GetAll
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> GetAll()
     {
         var query = await _catagoryService.GetAllAsync();
         return Ok(query);
     }
 
-    //[HttpPost]
-    //public async Task<IActionResult> Post(Catagory catagory)
-    //{
-    //    await _catagoryService.AddAsync(catagory);
-    //    return StatusCode((int)HttpStatusCode.Created);
-    //}
+    /// <summary>
+    /// GetByID Catagory
+    /// </summary>
+    /// <param name="Id"></param>
+    /// <returns></returns>
+    [HttpGet("{Id}")]
+    public async Task<IActionResult> GetByIdCatagory(Guid Id)
+    {
+        var query = await _catagoryService.GetByIdAsync(Id);
+        return Ok(query);
+    }
 
-    //[HttpDelete("{catagoryId:Guid}")]
-    //public async Task<IActionResult> Remove(string catagoryId)
-    //{
-    //    await _catagoryService.RemoveAsync(catagoryId);
-    //    return Ok();
-    //}
+    /// <summary>
+    /// Create Catagory
+    /// </summary>
+    /// <param name="CatagoryCreateDTO"></param>
+    /// <returns></returns>
+    [HttpPost]
+    public async Task<IActionResult> Post(CatagoryCreateDTO CatagoryCreateDTO)
+    {
+        await _catagoryService.CreateAsync(CatagoryCreateDTO);
+        return StatusCode((int)HttpStatusCode.Created);
+    }
 
-    //[HttpPut("{catagoryId:Guid}")]
-    //public async Task<IActionResult> Update(Guid catagoryId, [FromBody] CatagoryUpdateDTO catagoryUpdateDTO)
-    //{
-    //    await _catagoryService.UpdateAsync(catagoryId, catagoryUpdateDTO);
-    //    return Ok();
-    //}
+    [HttpDelete("{catagoryId:Guid}")]
+    public async Task<IActionResult> Remove(Guid catagoryId)
+    {
+        await _catagoryService.RemoveAsync(catagoryId);
+        return Ok();
+    }
+
+    [HttpPut("{catagoryId:Guid}")]
+    public async Task<IActionResult> Update(Guid catagoryId, [FromBody] CatagoryUpdateDTO catagoryUpdateDTO)
+    {
+        await _catagoryService.UpdateAsync(catagoryId, catagoryUpdateDTO);
+        return Ok();
+    }
 
 }
