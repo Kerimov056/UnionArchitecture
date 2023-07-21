@@ -53,18 +53,18 @@ public class CatagoriesController : ControllerBase
         return StatusCode((int)HttpStatusCode.Created);
     }
 
-    //[HttpDelete("{catagoryId:Guid}")]
-    //public async Task<IActionResult> Remove(string catagoryId)
-    //{
-    //    await _catagoryService.RemoveAsync(catagoryId);
-    //    return Ok();
-    //}
+    [HttpDelete("{catagoryId:Guid}")]
+    public async Task<IActionResult> Remove(Guid catagoryId)
+    {
+        await _catagoryService.RemoveAsync(catagoryId);
+        return Ok();
+    }
 
-    //[HttpPut("{catagoryId:Guid}")]
-    //public async Task<IActionResult> Update(Guid catagoryId, [FromBody] CatagoryUpdateDTO catagoryUpdateDTO)
-    //{
-    //    await _catagoryService.UpdateAsync(catagoryId, catagoryUpdateDTO);
-    //    return Ok();
-    //}
+    [HttpPut("{catagoryId:Guid}")]
+    public async Task<IActionResult> Update(Guid catagoryId, [FromBody] CatagoryUpdateDTO catagoryUpdateDTO)
+    {
+        await _catagoryService.UpdateAsync(catagoryId, catagoryUpdateDTO);
+        return Ok();
+    }
 
 }

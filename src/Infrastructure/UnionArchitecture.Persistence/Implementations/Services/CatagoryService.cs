@@ -6,6 +6,8 @@ using UnionArchitecture.Aplication.Abstraction.Services;
 using UnionArchitecture.Aplication.DTOs.Catagory;
 using UnionArchitecture.Domain.Entities;
 using UnionArchitecture.Persistence.Exceptions;
+using UnionArchitecture.Persistence.Migrations;
+using Catagory = UnionArchitecture.Domain.Entities.Catagory;
 
 namespace UnionArchitecture.Persistence.Implementations.Services;
 
@@ -46,13 +48,21 @@ public class CatagoryService : ICatagoryService
         return EntityToDto;
     }
 
-    public Task RemoveAsync(string id)
+    public async Task RemoveAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var category = await _CatagoryReadRepository.GetByIdAsync(id);
+        if (category is null) throw new NullReferenceException("There is no catagory with this name");
+        _CatagoryWriteRepository.Remove(category);
+        await _CatagoryWriteRepository.SaveChangeAsync();
     }
 
-    public Task UpdateAsync(string id, CatagoryUpdateDTO catagoryUpdateDTO)
+    public async Task UpdateAsync(Guid id, CatagoryUpdateDTO catagoryUpdateDTO)
     {
-        throw new NotImplementedException();
+        var category = await _CatagoryReadRepository.GetByIdAsync(id);
+        if (category is null) throw new NullReferenceException("There is no catagory with this name");
+        _mapper.Map(catagoryUpdateDTO, category);
+        _CatagoryWriteRepository.Update(category);
+        await _CatagoryWriteRepository.SaveChangeAsync();
     }
+
 }
