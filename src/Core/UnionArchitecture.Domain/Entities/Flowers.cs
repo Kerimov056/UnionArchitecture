@@ -12,5 +12,10 @@ public class Flowers : BaseEntity
     public FlowersDetails FlowersDetails { get; set; }
     public Guid CatagoryId { get; set; }
     public Catagory Catagory { get; set; }
-
+    public List<FlowersImage> Images { get; set; }
+    public List<Flower_Tag> Flower_Tags { get; set; }
 }
+
+
+
+//public string Tags { get; set; }

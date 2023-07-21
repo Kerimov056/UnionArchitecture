@@ -14,7 +14,6 @@ public class FlowerGetDTOValidator : AbstractValidator<Flowers>
         RuleFor(x => x.Catagory.Description).NotNull().NotEmpty().MaximumLength(500);
         RuleFor(x => x.FlowersDetails.Description).NotNull().NotEmpty().MaximumLength(280);
         RuleFor(x => x.FlowersDetails.SKU).NotNull().NotEmpty();
-        RuleFor(x => x.FlowersDetails.Tags).NotNull().NotEmpty().MaximumLength(60);
         RuleFor(x => x.FlowersDetails.Weight).NotNull().NotEmpty();
         RuleFor(x => x.FlowersDetails.PowerFlowers).NotNull().NotEmpty().MaximumLength(300);
     }

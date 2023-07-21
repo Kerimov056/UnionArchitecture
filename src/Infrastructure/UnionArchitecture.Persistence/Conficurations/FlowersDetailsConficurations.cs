@@ -10,7 +10,6 @@ internal class FlowersDetailsConficurations : IEntityTypeConfiguration<FlowersDe
     {
         builder.Property(x => x.Description).IsRequired().HasMaxLength(280);
         builder.Property(x => x.SKU).IsRequired();
-        builder.Property(x => x.Tags).IsRequired().HasMaxLength(60);
         builder.Property(x => x.Weight).IsRequired();
         builder.Property(x => x.PowerFlowers).IsRequired().HasMaxLength(300);
     }
