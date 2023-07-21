@@ -38,9 +38,12 @@ public class CatagoryService : ICatagoryService
         var catagoryGetDTOs = _mapper.Map<List<CatagoryGetDTO>>(catagories);
         return catagoryGetDTOs;
     }
-    public Task<CatagoryGetDTO> GetByIdAsync(string Id)
+    public async Task<CatagoryGetDTO> GetByIdAsync(Guid Id)
     {
-        throw new NotImplementedException();
+        var catogry = await _CatagoryReadRepository.GetByIdAsync(Id);
+        if (catogry is null) throw new NullReferenceException("There is no catagory with this name");
+        var EntityToDto = _mapper.Map<CatagoryGetDTO>(catogry);
+        return EntityToDto;
     }
 
     public Task RemoveAsync(string id)
