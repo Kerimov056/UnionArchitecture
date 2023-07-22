@@ -5,5 +5,6 @@ namespace UnionArchitecture.Aplication.DTOs.Flowers;
 public record FlowerGetDTO(string name,
                            string image,
                            decimal price,
-                           CatagoryGetDTO catagory
+                           CatagoryGetDTO catagory,
+                           FlowerDetailsGetDTOs FlowerDetailsDTOs
                            );

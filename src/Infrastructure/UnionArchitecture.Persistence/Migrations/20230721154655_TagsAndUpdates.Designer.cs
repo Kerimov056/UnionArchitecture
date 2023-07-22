@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UnionArchitecture.Persistence.Contexts;
 
@@ -11,9 +12,10 @@ using UnionArchitecture.Persistence.Contexts;
 namespace UnionArchitecture.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230721154655_TagsAndUpdates")]
+    partial class TagsAndUpdates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,20 +55,23 @@ namespace UnionArchitecture.Persistence.Migrations
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flower_Tag", b =>
                 {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("FlowersId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("TagsId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                    b.HasKey("Id");
 
-                    b.HasKey("FlowersId", "TagsId");
+                    b.HasIndex("FlowersId");
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("Flower_Tags");
+                    b.ToTable("Flower_Tag");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flowers", b =>
@@ -211,7 +216,7 @@ namespace UnionArchitecture.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UnionArchitecture.Domain.Entities.Tags", "Tags")
+                    b.HasOne("UnionArchitecture.Domain.Entities.Tags", "TagsTags")
                         .WithMany("Flower_Tags")
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -219,7 +224,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.Navigation("Flowers");
 
-                    b.Navigation("Tags");
+                    b.Navigation("TagsTags");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flowers", b =>

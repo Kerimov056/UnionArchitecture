@@ -10,8 +10,6 @@ public class CatagoryConficurations : IEntityTypeConfiguration<Catagory>
     {
         builder.Property(x => x.Name).IsRequired().HasMaxLength(34);
         builder.Property(x => x.Description).IsRequired(false).HasMaxLength(500);
-
-        
     }
 
 }
