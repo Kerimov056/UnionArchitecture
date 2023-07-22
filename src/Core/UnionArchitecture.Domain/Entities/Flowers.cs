@@ -9,8 +9,8 @@ public class Flowers : BaseEntity
     public decimal Price { get; set; }
 
     //RelathionsShip
-    public FlowersDetails FlowersDetails { get; set; }
     public Guid CatagoryId { get; set; }
+    public FlowersDetails FlowersDetails { get; set; }
     public Catagory Catagory { get; set; }
     public List<FlowersImage> Images { get; set; }
     public List<Flower_Tag> Flower_Tags { get; set; }

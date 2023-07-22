@@ -7,6 +7,7 @@ using UnionArchitecture.Aplication.DTOs.Flowers;
 using UnionArchitecture.Domain.Entities;
 using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.Exceptions;
+using UnionArchitecture.Persistence.Migrations;
 
 namespace UnionArchitecture.Persistence.Implementations.Services;
 
@@ -96,9 +97,11 @@ public class FlowerService : IFlowerService
     //.Include(x => x.Images)
     //.Include(x => x.Flower_Tags)
     //.ThenInclude(x => x.Tags)
-    public Task<FlowerGetDTO> GetByIdAsync(Guid id)
+    public async Task<FlowerGetDTO> GetByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var Flower = await _flowersReadRepository.GetByIdAsync(id);
+        if (Flower is null) throw new NullReferenceException("There is no Flower with this name");
+        
     }
 
     public async Task RemoveAsync(Guid id)
@@ -109,13 +112,18 @@ public class FlowerService : IFlowerService
         await _flowersWriteRepository.SaveChangeAsync();
     }
 
+
+
+
+    //Demeli burda ne qalid Gelen Flower inculde seklinde duzgun gelmelidi
+    //Ve FlowerUptadeDTO duzgun doldurulmalidi
     public async Task UpdateAsync(Guid id, FlowerUptadeDTO flowerUptadeDTO)
     {
-        var flower = await _flowersReadRepository.GetByIdAsync(id);
-        if (flower is null) throw new NullReferenceException();
-
-        var NewFlpwer =  _mapper.Map<Flowers>(flowerUptadeDTO);
-        _flowersWriteRepository.Update(NewFlpwer);
+        var Flower = await _flowersReadRepository.GetByIdAsync(id);
+        if (Flower is null) throw new NullReferenceException();
+         
+        _mapper.Map(flowerUptadeDTO, Flower);
+        _flowersWriteRepository.Update(Flower);
         await _flowersWriteRepository.SaveChangeAsync();
     }
 }

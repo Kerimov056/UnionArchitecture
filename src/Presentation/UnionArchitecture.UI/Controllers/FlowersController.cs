@@ -43,4 +43,11 @@ public class FlowersController : ControllerBase
         await _flowerService.UpdateAsync(FlowersId, flowerUptadeDTO);
         return Ok();
     }
+
+    [HttpGet("{id:Guid}")]
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        await _flowerService.GetByIdAsync(id);
+        return Ok();
+    }
 }
