@@ -9,5 +9,5 @@ public class Blog : BaseEntity
     public string Description { get; set; }
     public Guid CatagoryId { get; set; }
     public Catagory Catagory { get; set; }
-    //public List<BlogImage> BlogImages { get; set; }
+    public List<BlogImage> BlogImages { get; set; }
 }

@@ -25,10 +25,6 @@ public class AppDbContext : DbContext
             .WithMany(s => s.Flower_Tags)
             .HasForeignKey(us => us.TagsId);
 
-        //modelBuilder.Entity<Blog>()
-        //       .HasMany(b => b.BlogImages)
-        //       .WithOne(bi => bi.Blog)
-        //       .HasForeignKey(bi => bi.BlogId);
     }
 
     public DbSet<Catagory> Catagories { get; set; } = null!;
