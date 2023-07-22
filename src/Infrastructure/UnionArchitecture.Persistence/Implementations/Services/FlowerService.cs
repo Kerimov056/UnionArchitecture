@@ -79,7 +79,7 @@ public class FlowerService : IFlowerService
         await _flowersWriteRepository.SaveChangeAsync();
     }
 
-    public async Task<List<FlowerGetDTO>> GetAllAsync()
+    public async Task<List<FlowerDTO>> GetAllAsync()
     {
         var flower = await _flowersReadRepository
                 .GetAll()
@@ -89,10 +89,10 @@ public class FlowerService : IFlowerService
                 .ThenInclude(x=>x.Tags)
                 .ToListAsync();
         
-        var FlowerGetDto = _mapper.Map<List<FlowerGetDTO>>(flower);
+        var FlowerGetDto = _mapper.Map<List<FlowerDTO>>(flower);
+
         return FlowerGetDto;
     }
-
     //.Include(x => x.FlowersDetails)
     //.Include(x => x.Images)
     //.Include(x => x.Flower_Tags)
@@ -107,8 +107,6 @@ public class FlowerService : IFlowerService
                      .ThenInclude(x => x.Tags)
                      .FirstOrDefaultAsync(x=>x.Id==id);
 
-        //var TAG = await _appDbContext.Flower_Tags.Include(x=>x.Tags).ToListAsync();
-
         if (Flower is null) throw new NullReferenceException("There is no Flower with this name");
 
         FlowerDTO EntityToDTO = new()
@@ -122,12 +120,11 @@ public class FlowerService : IFlowerService
             PowerFlowers = Flower.FlowersDetails.PowerFlowers,
             OffImagePath = Flower.ImagePath,
             CatagoryId = Flower.CatagoryId,
-
+            //demeli burda biden Tag'in gostermek qalib.
         };
         return EntityToDTO;
     }
-
-    //5f618d9d-49bb-4733-f17e-08db8a88f6ad
+    
 
     public async Task RemoveAsync(Guid id)
     {
@@ -143,8 +140,6 @@ public class FlowerService : IFlowerService
         _flowersWriteRepository.Remove(Flower);
         await _flowersWriteRepository.SaveChangeAsync();
     }
-
-
 
 
     //Demeli burda ne qalid Gelen Flower inculde seklinde duzgun gelmelidi
