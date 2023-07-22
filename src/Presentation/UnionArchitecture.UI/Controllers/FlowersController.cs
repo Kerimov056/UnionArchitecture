@@ -38,9 +38,9 @@ public class FlowersController : ControllerBase
     }
 
     [HttpPut("{FlowersId:Guid}")]
-    public async Task<IActionResult> Update(Guid FlowersId, [FromBody] FlowerUptadeDTO flowerUptadeDTO)
+    public async Task<IActionResult> Update(Guid FlowersId, [FromBody] FlowerDTO flowerDTO)
     {
-        await _flowerService.UpdateAsync(FlowersId, flowerUptadeDTO);
+        await _flowerService.UpdateAsync(FlowersId, flowerDTO);
         return Ok();
     }
 

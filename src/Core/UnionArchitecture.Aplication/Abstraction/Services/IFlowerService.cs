@@ -7,6 +7,6 @@ public interface IFlowerService
     Task<List<FlowerGetDTO>> GetAllAsync();
     Task CreateAsync(FlowerCreateDTO createDTO);
     Task<FlowerDTO> GetByIdAsync(Guid id);
-    Task UpdateAsync(Guid id, FlowerUptadeDTO flowerUptadeDTO);
+    Task UpdateAsync(Guid id, FlowerDTO flowerDTO);
     Task RemoveAsync(Guid id);
 }

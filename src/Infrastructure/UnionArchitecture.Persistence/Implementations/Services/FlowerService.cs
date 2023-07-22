@@ -127,7 +127,6 @@ public class FlowerService : IFlowerService
         return EntityToDTO;
     }
 
-    //ecc2be09-dd4e-444e-e047-08db8adcd933
     //5f618d9d-49bb-4733-f17e-08db8a88f6ad
 
     public async Task RemoveAsync(Guid id)
@@ -150,12 +149,18 @@ public class FlowerService : IFlowerService
 
     //Demeli burda ne qalid Gelen Flower inculde seklinde duzgun gelmelidi
     //Ve FlowerUptadeDTO duzgun doldurulmalidi
-    public async Task UpdateAsync(Guid id, FlowerUptadeDTO flowerUptadeDTO)
+    public async Task UpdateAsync(Guid id, FlowerDTO flowerDTO)
     {
-        var Flower = await _flowersReadRepository.GetByIdAsync(id);
+        var Flower = await _flowersReadRepository
+                     .GetAll()
+                     .Include(x => x.FlowersDetails)
+                     .Include(x => x.Images)
+                     .Include(x => x.Flower_Tags)
+                     .ThenInclude(x => x.Tags)
+                     .FirstOrDefaultAsync(x => x.Id == id);
         if (Flower is null) throw new NullReferenceException();
          
-        _mapper.Map(flowerUptadeDTO, Flower);
+        _mapper.Map(flowerDTO, Flower);
         _flowersWriteRepository.Update(Flower);
         await _flowersWriteRepository.SaveChangeAsync();
     }
