@@ -49,5 +49,6 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         //Services
         services.AddScoped<ICatagoryService, CatagoryService>();
         services.AddScoped<IFlowerService, FlowerService>();
+        services.AddScoped<ITagService, TagService>();
     }
 }
