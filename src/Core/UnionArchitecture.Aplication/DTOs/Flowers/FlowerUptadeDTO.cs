@@ -3,8 +3,5 @@
 namespace UnionArchitecture.Aplication.DTOs.Flowers;
 
 public record FlowerUptadeDTO(string name, string image,
-                decimal price, Guid CatagoryId,
-                string Description, int SKU,
-                string Tags, double Weight,
-                string PowerFlowers,
-                string ImagePath);
+                decimal price, Guid CatagoryId //asdadadadad
+                );

@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using UnionArchitecture.Aplication.Abstraction.Services;
+using UnionArchitecture.Aplication.DTOs.Catagory;
 using UnionArchitecture.Aplication.DTOs.Flowers;
+using UnionArchitecture.Persistence.Implementations.Services;
 
 namespace UnionArchitecture.UI.Controllers;
 
@@ -26,5 +28,19 @@ public class FlowersController : ControllerBase
     {
         await _flowerService.CreateAsync(flowerCreateDTO);
         return StatusCode((int)HttpStatusCode.Created);
+    }
+
+    [HttpDelete("{FlowerId:Guid}")]
+    public async Task<IActionResult> Remove(Guid FlowerId)
+    {
+        await _flowerService.RemoveAsync(FlowerId);
+        return Ok();
+    }
+
+    [HttpPut("{FlowersId:Guid}")]
+    public async Task<IActionResult> Update(Guid FlowersId, [FromBody] FlowerUptadeDTO flowerUptadeDTO)
+    {
+        await _flowerService.UpdateAsync(FlowersId, flowerUptadeDTO);
+        return Ok();
     }
 }
