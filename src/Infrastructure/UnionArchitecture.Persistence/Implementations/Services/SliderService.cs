@@ -22,9 +22,11 @@ public class SliderService : ISliderService
         _mapper = mapper;
     }
 
-    public Task CreateAsync(SliderCreateDTO sliderCreateDTO)
+    public async Task CreateAsync(SliderCreateDTO sliderCreateDTO)
     {
-        throw new NotImplementedException();
+        var DtoToEntity = _mapper.Map<Slider>(sliderCreateDTO);
+        await _sliderWriteRepository.AddAsync(DtoToEntity);
+        await _sliderWriteRepository.SaveChangeAsync();
     }
 
     public async Task<List<SliderGetDTO>> GetAllAsync()

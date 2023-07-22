@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using UnionArchitecture.Aplication.Abstraction.Services;
+using UnionArchitecture.Aplication.DTOs.Slider;
 
 namespace UnionArchitecture.UI.Controllers;
 
@@ -16,5 +18,12 @@ public class SlidersController : ControllerBase
     {
         var Slider = await _sliderService.GetAllAsync();
         return Ok(Slider);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Post(SliderCreateDTO sliderCreateDTO)
+    {
+        await _sliderService.CreateAsync(sliderCreateDTO);
+        return StatusCode((int)HttpStatusCode.Created);
     }
 }
