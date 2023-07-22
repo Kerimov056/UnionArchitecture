@@ -7,7 +7,7 @@ public interface ISliderService
 {
     Task<List<SliderGetDTO>> GetAllAsync();
     Task CreateAsync(SliderCreateDTO sliderCreateDTO);
-    Task<CatagoryGetDTO> GetByIdAsync(Guid Id);
+    Task<SliderGetDTO> GetByIdAsync(Guid Id);
     Task UpdateAsync(Guid id, SliderUptadeDTO sliderUptadeDTO);
     Task RemoveAsync(Guid id);
 }

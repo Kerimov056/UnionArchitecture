@@ -37,12 +37,12 @@ public class SliderService : ISliderService
         return EntityToDto;
     }
 
-    public async Task<CatagoryGetDTO> GetByIdAsync(Guid Id)
+    public async Task<SliderGetDTO> GetByIdAsync(Guid Id)
     {
-        //var BySlider = await _sliderReadRepository.GetByIdAsync(Id);
-        //if (BySlider is null) throw new NullReferenceException();
-        //var EntityToDto = _mapper.Map<SliderGetDTO>(BySlider);
-        //return EntityToDto;
+        var BySlider = await _sliderReadRepository.GetByIdAsync(Id);
+        if (BySlider is null) throw new NullReferenceException();
+        var EntityToDto = _mapper.Map<SliderGetDTO>(BySlider);
+        return EntityToDto;
     }
 
     public async Task RemoveAsync(Guid id)
