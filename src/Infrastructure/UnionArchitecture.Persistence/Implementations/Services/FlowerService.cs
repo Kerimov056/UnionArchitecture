@@ -15,19 +15,22 @@ public class FlowerService : IFlowerService
     private readonly IFlowersReadRepository _flowersReadRepository;
     private readonly IFlowersWriteRepository _flowersWriteRepository;
     private readonly IFlowersDetailsWriteRepository _flowersDetailsWriteRepository;
+    private readonly IFlowersImageWriteRepository _flowersImageWriteRepository;
     private readonly IMapper _mapper;
     private readonly AppDbContext _appDbContext;
     public FlowerService(IFlowersReadRepository flowersReadRepository,
                          IFlowersWriteRepository flowersWriteRepository,
                          IMapper mapper,
                          IFlowersDetailsWriteRepository flowersDetailsWriteRepository,
-                         AppDbContext appDbContext)
+                         AppDbContext appDbContext,
+                         IFlowersImageWriteRepository flowersImageWriteRepository)
     {
         _flowersReadRepository = flowersReadRepository;
         _flowersWriteRepository = flowersWriteRepository;
         _mapper = mapper;
         _flowersDetailsWriteRepository = flowersDetailsWriteRepository;
         _appDbContext = appDbContext;
+        _flowersImageWriteRepository = flowersImageWriteRepository;
     }
 
     public async Task CreateAsync(FlowerCreateDTO createDTO)
@@ -58,7 +61,7 @@ public class FlowerService : IFlowerService
             ImagePath = createDTO.FlowersImageDTO.ImagePath,
             FlowersId = newFlower.Id
         };
-        await _appDbContext.FlowersImages.AddAsync(flowersImage);
+        await _flowersImageWriteRepository.AddAsync(flowersImage);
        
         foreach (var item in _appDbContext.Tags)
         {
@@ -68,10 +71,9 @@ public class FlowerService : IFlowerService
                 FlowersId = newFlower.Id
             };
             //tag'e add elemek lazimdi burda
-            _appDbContext.Flower_Tags.Add(flower_tag);
+            await _appDbContext.Flower_Tags.AddAsync(flower_tag);
         }
-        await _appDbContext.SaveChangesAsync();
-
+        await _flowersWriteRepository.SaveChangeAsync();
     }
 
     public async Task<List<FlowerGetDTO>> GetAllAsync()
