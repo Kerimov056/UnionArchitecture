@@ -37,6 +37,8 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddScoped<ICatagoryWriteRepository, CatagoryWriteRepository>();
         services.AddScoped<IFlowersReadRepository, FlowersReadRepository>();
         services.AddScoped<IFlowersWriteRepository, FlowersWriteRepository>();
+        services.AddScoped<IFlowersDetailsReadRepository, FlowersDetailsReadRepository>();
+        services.AddScoped<IFlowersDetailsWriteRepository, FlowersDetailsWriteRepository>();
 
         //Services
         services.AddScoped<ICatagoryService, CatagoryService>();
