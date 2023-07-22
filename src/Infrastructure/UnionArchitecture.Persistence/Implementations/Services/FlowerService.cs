@@ -58,7 +58,6 @@ public class FlowerService : IFlowerService
         };
         await _flowersDetailsWriteRepository.AddAsync(FDetailEntity);
 
-        //Yaziriq ama Repository'e cevireceyik
         FlowersImage flowersImage = new()
         {
             ImagePath = createDTO.FlowersImageDTO.ImagePath,
@@ -81,23 +80,42 @@ public class FlowerService : IFlowerService
 
     public async Task<List<FlowerGetDTO>> GetAllAsync()
     {
-        var flower = await _flowersReadRepository.GetAll().ToListAsync();
+        var flower = await _flowersReadRepository
+                .GetAll()
+                .Include(x => x.FlowersDetails)
+                .Include(x => x.Images)
+                .Include(x => x.Flower_Tags)
+                .ThenInclude(x=>x.Tags)
+                .ToListAsync();
+        
         var FlowerGetDto = _mapper.Map<List<FlowerGetDTO>>(flower);
         return FlowerGetDto;
     }
 
+    //.Include(x => x.FlowersDetails)
+    //.Include(x => x.Images)
+    //.Include(x => x.Flower_Tags)
+    //.ThenInclude(x => x.Tags)
     public Task<FlowerGetDTO> GetByIdAsync(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public Task RemoveAsync(Guid id)
+    public async Task RemoveAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var flower = await _flowersReadRepository.GetByIdAsync(id);
+        if (flower is null) throw new NullReferenceException();
+        _flowersWriteRepository.Remove(flower);
+        await _flowersWriteRepository.SaveChangeAsync();
     }
 
-    public Task UpdateAsync(Guid id, FlowerUptadeDTO flowerUptadeDTO)
+    public async Task UpdateAsync(Guid id, FlowerUptadeDTO flowerUptadeDTO)
     {
-        throw new NotImplementedException();
+        var flower = await _flowersReadRepository.GetByIdAsync(id);
+        if (flower is null) throw new NullReferenceException();
+
+        var NewFlpwer =  _mapper.Map<Flowers>(flowerUptadeDTO);
+        _flowersWriteRepository.Update(NewFlpwer);
+        await _flowersWriteRepository.SaveChangeAsync();
     }
 }
