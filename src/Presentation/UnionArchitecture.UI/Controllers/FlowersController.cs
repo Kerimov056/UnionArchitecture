@@ -47,7 +47,7 @@ public class FlowersController : ControllerBase
     [HttpGet("{id:Guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
-        await _flowerService.GetByIdAsync(id);
-        return Ok();
+        var Flower = await _flowerService.GetByIdAsync(id);
+        return Ok(Flower);
     }
 }

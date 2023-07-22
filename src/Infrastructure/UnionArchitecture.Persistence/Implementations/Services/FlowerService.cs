@@ -97,18 +97,51 @@ public class FlowerService : IFlowerService
     //.Include(x => x.Images)
     //.Include(x => x.Flower_Tags)
     //.ThenInclude(x => x.Tags)
-    public async Task<FlowerGetDTO> GetByIdAsync(Guid id)
+    public async Task<FlowerDTO> GetByIdAsync(Guid id)
     {
-        var Flower = await _flowersReadRepository.GetByIdAsync(id);
+        var Flower = await _flowersReadRepository
+                     .GetAll()
+                     .Include(x => x.FlowersDetails)
+                     .Include(x => x.Images)
+                     .Include(x => x.Flower_Tags)
+                     .ThenInclude(x => x.Tags)
+                     .FirstOrDefaultAsync(x=>x.Id==id);
+
+        //var TAG = await _appDbContext.Flower_Tags.Include(x=>x.Tags).ToListAsync();
+
         if (Flower is null) throw new NullReferenceException("There is no Flower with this name");
-        
+
+        FlowerDTO EntityToDTO = new()
+        {
+            Name = Flower.Name,
+            OnImagePath = Flower.ImagePath,
+            Price = Flower.Price,
+            Description = Flower.FlowersDetails.Description,
+            SKU = Flower.FlowersDetails.SKU,
+            Weight = Flower.FlowersDetails.Weight,
+            PowerFlowers = Flower.FlowersDetails.PowerFlowers,
+            OffImagePath = Flower.ImagePath,
+            CatagoryId = Flower.CatagoryId,
+
+        };
+        return EntityToDTO;
     }
+
+    //ecc2be09-dd4e-444e-e047-08db8adcd933
+    //5f618d9d-49bb-4733-f17e-08db8a88f6ad
 
     public async Task RemoveAsync(Guid id)
     {
-        var flower = await _flowersReadRepository.GetByIdAsync(id);
-        if (flower is null) throw new NullReferenceException();
-        _flowersWriteRepository.Remove(flower);
+        var Flower = await _flowersReadRepository
+                     .GetAll()
+                     .Include(x => x.FlowersDetails)
+                     .Include(x => x.Images)
+                     .Include(x => x.Flower_Tags)
+                     .ThenInclude(x => x.Tags)
+                     .FirstOrDefaultAsync(x => x.Id == id);
+        if (Flower is null) throw new NullReferenceException();
+
+        _flowersWriteRepository.Remove(Flower);
         await _flowersWriteRepository.SaveChangeAsync();
     }
 
