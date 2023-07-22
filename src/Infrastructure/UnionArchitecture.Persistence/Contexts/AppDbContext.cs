@@ -32,4 +32,5 @@ public class AppDbContext : DbContext
     public DbSet<FlowersImage> FlowersImages { get; set; } 
     public DbSet<Tags> Tags { get; set; } 
     public DbSet<Flower_Tag> Flower_Tags { get; set; } 
+    public DbSet<Slider> Sliders { get; set; } 
 }

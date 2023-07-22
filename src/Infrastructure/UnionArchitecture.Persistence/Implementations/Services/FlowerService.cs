@@ -7,6 +7,7 @@ using UnionArchitecture.Aplication.DTOs.Flowers;
 using UnionArchitecture.Domain.Entities;
 using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.Exceptions;
+using UnionArchitecture.Persistence.Migrations;
 
 namespace UnionArchitecture.Persistence.Implementations.Services;
 
@@ -78,7 +79,7 @@ public class FlowerService : IFlowerService
         await _flowersWriteRepository.SaveChangeAsync();
     }
 
-    public async Task<List<FlowerGetDTO>> GetAllAsync()
+    public async Task<List<FlowerDTO>> GetAllAsync()
     {
         var flower = await _flowersReadRepository
                 .GetAll()
@@ -88,34 +89,74 @@ public class FlowerService : IFlowerService
                 .ThenInclude(x=>x.Tags)
                 .ToListAsync();
         
-        var FlowerGetDto = _mapper.Map<List<FlowerGetDTO>>(flower);
+        var FlowerGetDto = _mapper.Map<List<FlowerDTO>>(flower);
+
         return FlowerGetDto;
     }
-
     //.Include(x => x.FlowersDetails)
     //.Include(x => x.Images)
     //.Include(x => x.Flower_Tags)
     //.ThenInclude(x => x.Tags)
-    public Task<FlowerGetDTO> GetByIdAsync(Guid id)
+    public async Task<FlowerDTO> GetByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var Flower = await _flowersReadRepository
+                     .GetAll()
+                     .Include(x => x.FlowersDetails)
+                     .Include(x => x.Images)
+                     .Include(x => x.Flower_Tags)
+                     .ThenInclude(x => x.Tags)
+                     .FirstOrDefaultAsync(x=>x.Id==id);
+
+        if (Flower is null) throw new NullReferenceException("There is no Flower with this name");
+
+        FlowerDTO EntityToDTO = new()
+        {
+            Name = Flower.Name,
+            OnImagePath = Flower.ImagePath,
+            Price = Flower.Price,
+            Description = Flower.FlowersDetails.Description,
+            SKU = Flower.FlowersDetails.SKU,
+            Weight = Flower.FlowersDetails.Weight,
+            PowerFlowers = Flower.FlowersDetails.PowerFlowers,
+            OffImagePath = Flower.ImagePath,
+            CatagoryId = Flower.CatagoryId,
+            //demeli burda biden Tag'in gostermek qalib.
+        };
+        return EntityToDTO;
     }
+    
 
     public async Task RemoveAsync(Guid id)
     {
-        var flower = await _flowersReadRepository.GetByIdAsync(id);
-        if (flower is null) throw new NullReferenceException();
-        _flowersWriteRepository.Remove(flower);
+        var Flower = await _flowersReadRepository
+                     .GetAll()
+                     .Include(x => x.FlowersDetails)
+                     .Include(x => x.Images)
+                     .Include(x => x.Flower_Tags)
+                     .ThenInclude(x => x.Tags)
+                     .FirstOrDefaultAsync(x => x.Id == id);
+        if (Flower is null) throw new NullReferenceException();
+
+        _flowersWriteRepository.Remove(Flower);
         await _flowersWriteRepository.SaveChangeAsync();
     }
 
-    public async Task UpdateAsync(Guid id, FlowerUptadeDTO flowerUptadeDTO)
-    {
-        var flower = await _flowersReadRepository.GetByIdAsync(id);
-        if (flower is null) throw new NullReferenceException();
 
-        var NewFlpwer =  _mapper.Map<Flowers>(flowerUptadeDTO);
-        _flowersWriteRepository.Update(NewFlpwer);
+    //Demeli burda ne qalid Gelen Flower inculde seklinde duzgun gelmelidi
+    //Ve FlowerUptadeDTO duzgun doldurulmalidi
+    public async Task UpdateAsync(Guid id, FlowerDTO flowerDTO)
+    {
+        var Flower = await _flowersReadRepository
+                     .GetAll()
+                     .Include(x => x.FlowersDetails)
+                     .Include(x => x.Images)
+                     .Include(x => x.Flower_Tags)
+                     .ThenInclude(x => x.Tags)
+                     .FirstOrDefaultAsync(x => x.Id == id);
+        if (Flower is null) throw new NullReferenceException();
+         
+        _mapper.Map(flowerDTO, Flower);
+        _flowersWriteRepository.Update(Flower);
         await _flowersWriteRepository.SaveChangeAsync();
     }
 }
