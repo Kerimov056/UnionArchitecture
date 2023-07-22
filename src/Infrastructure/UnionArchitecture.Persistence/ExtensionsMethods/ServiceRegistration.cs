@@ -27,7 +27,7 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         //Validators
         services.AddFluentValidationAutoValidation();
         services.AddFluentValidationClientsideAdapters();
-        services.AddValidatorsFromAssemblyContaining(typeof(CatagoryCreateDTOValidator));
+        services.AddValidatorsFromAssemblyContaining<CatagoryCreateDTOValidator>();
 
         //AutoMapper
         services.AddAutoMapper(typeof(CatagoryProfile).Assembly);

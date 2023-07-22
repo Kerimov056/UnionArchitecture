@@ -56,4 +56,5 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity, new()
         var query = isTracking ? Table.AsQueryable() : Table.AsNoTracking(); // burdada eynidir yalniz bir ferq  evvelden biz queryni yazib sonra axtaririrq
         return await query.FirstOrDefaultAsync(expression);
     }
+
 }
