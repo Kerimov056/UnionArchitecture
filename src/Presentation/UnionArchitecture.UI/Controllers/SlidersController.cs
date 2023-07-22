@@ -26,4 +26,25 @@ public class SlidersController : ControllerBase
         await _sliderService.CreateAsync(sliderCreateDTO);
         return StatusCode((int)HttpStatusCode.Created);
     }
+
+    [HttpGet("{id:Guid}")]
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        var BySlider = await _sliderService.GetByIdAsync(id);
+        return Ok(BySlider);
+    }
+
+    [HttpDelete("{id:Guid}")]
+    public async Task<IActionResult> Remove(Guid id)
+    {
+        await _sliderService.RemoveAsync(id);
+        return Ok();
+    }
+
+    [HttpPut("{id:Guid}")]
+    public async Task<IActionResult> Uptade(Guid id, [FromBody] SliderUptadeDTO sliderUptadeDTO)
+    {
+        await _sliderService.UpdateAsync(id, sliderUptadeDTO);
+        return Ok();
+    }
 }

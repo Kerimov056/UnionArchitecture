@@ -37,18 +37,26 @@ public class SliderService : ISliderService
         return EntityToDto;
     }
 
-    public Task<CatagoryGetDTO> GetByIdAsync(Guid Id)
+    public async Task<CatagoryGetDTO> GetByIdAsync(Guid Id)
     {
-        throw new NotImplementedException();
+        //var BySlider = await _sliderReadRepository.GetByIdAsync(Id);
+        //if (BySlider is null) throw new NullReferenceException();
+        //var EntityToDto = _mapper.Map<SliderGetDTO>(BySlider);
+        //return EntityToDto;
     }
 
-    public Task RemoveAsync(Guid id)
+    public async Task RemoveAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var BySlider = await _sliderReadRepository.GetByIdAsync(id);
+        if (BySlider is null) throw new NullReferenceException();
+        _sliderWriteRepository.Remove(BySlider);
+        await _sliderWriteRepository.SaveChangeAsync();
     }
 
-    public Task UpdateAsync(Guid id, SliderUptadeDTO sliderUptadeDTO)
+    public async Task UpdateAsync(Guid id, SliderUptadeDTO sliderUptadeDTO)
     {
-        throw new NotImplementedException();
+        //var BySlider = await _sliderReadRepository.GetByIdAsync(id);
+        //if (BySlider is null) throw new NullReferenceException();
+
     }
 }
