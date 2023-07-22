@@ -7,6 +7,7 @@ using UnionArchitecture.Aplication.DTOs.TagDTOs;
 using UnionArchitecture.Persistence.Exceptions;
 using UnionArchitecture.Persistence.Migrations;
 using UnionArchitecture.Domain.Entities;
+using Tags = UnionArchitecture.Domain.Entities.Tags;
 
 namespace UnionArchitecture.Persistence.Implementations.Services;
 
@@ -26,13 +27,13 @@ public class TagService : ITagService
     }
     public async Task CreateAsync(TagCreateDTOs tagCreateDTOs)
     {
-        //Tags? tags = await _tagReadRepository
-        //    .GetByIdAsyncExpression(c => c.Tag.ToLower().Equals(tagCreateDTOs.tag));
-        //if (tags is not null) throw new DublicatedException("Dubilcated Tag Name!");
+        Tags? tags = await _tagReadRepository
+            .GetByIdAsyncExpression(c => c.Tag.ToLower().Equals(tagCreateDTOs.tag));
+        if (tags is not null) throw new DublicatedException("Dubilcated Tag Name!");
 
-        //var DtoToTag = _mapper.Map<Tags>();
-        //await _tagWriteRepository.AddAsync(DtoToTag);
-        //await _tagWriteRepository.SaveChangeAsync();
+        var DtoToTag = _mapper.Map<Tags>(tagCreateDTOs);
+        await _tagWriteRepository.AddAsync(DtoToTag);
+        await _tagWriteRepository.SaveChangeAsync();
     }
     public async Task<List<TagGetDTOs>> GetAllAsync()
     {
