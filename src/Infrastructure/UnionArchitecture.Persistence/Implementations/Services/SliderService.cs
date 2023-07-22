@@ -55,8 +55,10 @@ public class SliderService : ISliderService
 
     public async Task UpdateAsync(Guid id, SliderUptadeDTO sliderUptadeDTO)
     {
-        //var BySlider = await _sliderReadRepository.GetByIdAsync(id);
-        //if (BySlider is null) throw new NullReferenceException();
-
+        var BySlider = await _sliderReadRepository.GetByIdAsync(id);
+        if (BySlider is null) throw new NullReferenceException();
+        _mapper.Map(sliderUptadeDTO, BySlider);
+        _sliderWriteRepository.Update(BySlider);
+        await _sliderWriteRepository.SaveChangeAsync();
     }
 }
