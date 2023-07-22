@@ -15,19 +15,25 @@ public class FlowerService : IFlowerService
     private readonly IFlowersReadRepository _flowersReadRepository;
     private readonly IFlowersWriteRepository _flowersWriteRepository;
     private readonly IFlowersDetailsWriteRepository _flowersDetailsWriteRepository;
+    private readonly IFlowersImageWriteRepository _flowersImageWriteRepository;
+    private readonly ITagService _tagService;
     private readonly IMapper _mapper;
     private readonly AppDbContext _appDbContext;
     public FlowerService(IFlowersReadRepository flowersReadRepository,
                          IFlowersWriteRepository flowersWriteRepository,
                          IMapper mapper,
                          IFlowersDetailsWriteRepository flowersDetailsWriteRepository,
-                         AppDbContext appDbContext)
+                         AppDbContext appDbContext,
+                         IFlowersImageWriteRepository flowersImageWriteRepository,
+                         ITagService tagService)
     {
         _flowersReadRepository = flowersReadRepository;
         _flowersWriteRepository = flowersWriteRepository;
         _mapper = mapper;
         _flowersDetailsWriteRepository = flowersDetailsWriteRepository;
         _appDbContext = appDbContext;
+        _flowersImageWriteRepository = flowersImageWriteRepository;
+        _tagService = tagService;
     }
 
     public async Task CreateAsync(FlowerCreateDTO createDTO)
@@ -58,20 +64,19 @@ public class FlowerService : IFlowerService
             ImagePath = createDTO.FlowersImageDTO.ImagePath,
             FlowersId = newFlower.Id
         };
-        await _appDbContext.FlowersImages.AddAsync(flowersImage);
+        await _flowersImageWriteRepository.AddAsync(flowersImage);
        
-        foreach (var item in _appDbContext.Tags)
+        foreach (var item in await _tagService.GetAllAsync())
         {
             var flower_tag = new Flower_Tag
             {
                 TagsId = item.Id,
                 FlowersId = newFlower.Id
             };
-            //tag'e add elemek lazimdi burda
-            _appDbContext.Flower_Tags.Add(flower_tag);
+            //tag'e add elemek lazimdi.Burda Ayri bir Repository  
+            await _appDbContext.Flower_Tags.AddAsync(flower_tag);
         }
-        await _appDbContext.SaveChangesAsync();
-
+        await _flowersWriteRepository.SaveChangeAsync();
     }
 
     public async Task<List<FlowerGetDTO>> GetAllAsync()

@@ -1,3 +1,3 @@
 ﻿namespace UnionArchitecture.Aplication.DTOs.TagDTOs;
 
-public record TagCreateDTOs(string tag);
+public record TagUptadeDTO(string tag);
