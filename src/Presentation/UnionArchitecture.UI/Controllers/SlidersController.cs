@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UnionArchitecture.Aplication.Abstraction.Services;
 
 namespace UnionArchitecture.UI.Controllers;
 
@@ -7,9 +8,13 @@ namespace UnionArchitecture.UI.Controllers;
 [ApiController]
 public class SlidersController : ControllerBase
 {
-    //[HttpGet]
-    //public async Task<IActionResult> GetAll()
-    //{
+    private readonly ISliderService _sliderService;
+    public SlidersController(ISliderService sliderService) => _sliderService = sliderService;
 
-    //}
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var Slider = await _sliderService.GetAllAsync();
+        return Ok(Slider);
+    }
 }
