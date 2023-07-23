@@ -24,6 +24,7 @@ public class AppDbContext : DbContext
             .HasOne(f => f.Tags)
             .WithMany(s => s.Flower_Tags)
             .HasForeignKey(us => us.TagsId);
+
     }
 
     public DbSet<Catagory> Catagories { get; set; } = null!;
@@ -33,4 +34,6 @@ public class AppDbContext : DbContext
     public DbSet<Tags> Tags { get; set; } 
     public DbSet<Flower_Tag> Flower_Tags { get; set; } 
     public DbSet<Slider> Sliders { get; set; } 
+    public DbSet<Blog> Blogs { get; set; } 
+    public DbSet<BlogImage> BlogImages { get; set; } 
 }

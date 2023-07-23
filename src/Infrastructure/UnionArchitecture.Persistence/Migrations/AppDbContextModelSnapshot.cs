@@ -22,6 +22,76 @@ namespace UnionArchitecture.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Blog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CatagoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1500)
+                        .HasColumnType("nvarchar(1500)");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CatagoryId");
+
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.BlogImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BlogId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("BlogImages");
+                });
+
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Catagory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -239,6 +309,28 @@ namespace UnionArchitecture.Persistence.Migrations
                     b.ToTable("Tags");
                 });
 
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Blog", b =>
+                {
+                    b.HasOne("UnionArchitecture.Domain.Entities.Catagory", "Catagory")
+                        .WithMany("Blogs")
+                        .HasForeignKey("CatagoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Catagory");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.BlogImage", b =>
+                {
+                    b.HasOne("UnionArchitecture.Domain.Entities.Blog", "Blog")
+                        .WithMany("BlogImages")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+                });
+
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flower_Tag", b =>
                 {
                     b.HasOne("UnionArchitecture.Domain.Entities.Flowers", "Flowers")
@@ -261,7 +353,7 @@ namespace UnionArchitecture.Persistence.Migrations
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flowers", b =>
                 {
                     b.HasOne("UnionArchitecture.Domain.Entities.Catagory", "Catagory")
-                        .WithMany()
+                        .WithMany("Flowers")
                         .HasForeignKey("CatagoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -287,6 +379,18 @@ namespace UnionArchitecture.Persistence.Migrations
                         .HasForeignKey("FlowersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Flowers");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Blog", b =>
+                {
+                    b.Navigation("BlogImages");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Catagory", b =>
+                {
+                    b.Navigation("Blogs");
 
                     b.Navigation("Flowers");
                 });
