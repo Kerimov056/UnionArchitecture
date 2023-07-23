@@ -9,6 +9,8 @@ public class BlogImageProfile:Profile
 	public BlogImageProfile()
 	{
 		CreateMap<BlogImage,BlogImageCreateDTO>().ReverseMap();
+		CreateMap<BlogImage, BlogImageGetDTO>().ReverseMap();
 		CreateMap<NewBlogDto, BlogImageCreateDTO>().ReverseMap();
+		CreateMap<BlogImage, BlogImageGetAllDTO>().ReverseMap();
 	}
 }

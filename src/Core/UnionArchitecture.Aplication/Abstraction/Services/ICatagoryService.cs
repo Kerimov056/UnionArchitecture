@@ -1,4 +1,5 @@
-﻿using UnionArchitecture.Aplication.DTOs.Catagory;
+﻿using UnionArchitecture.Aplication.DTOs.Blog;
+using UnionArchitecture.Aplication.DTOs.Catagory;
 using UnionArchitecture.Domain.Entities;
 
 namespace UnionArchitecture.Aplication.Abstraction.Services;
