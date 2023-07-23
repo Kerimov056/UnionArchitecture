@@ -7,7 +7,7 @@ public class BlogService : IBlogService
 {
     public Task AddAsync(BlogCreateDTO blogCreateDTO)
     {
-        throw new NotImplementedException();
+        
     }
 
     public Task<List<BlogGetDTO>> GetAllAsync()
