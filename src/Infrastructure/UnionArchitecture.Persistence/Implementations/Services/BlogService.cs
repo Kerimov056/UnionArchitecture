@@ -46,9 +46,16 @@ public class BlogService : IBlogService
 
     public async Task<List<BlogGetDTO>> GetAllAsync()
     {
-        var Blogs = await _blogReadReopsitory.GetAll().Include(x=>x.BlogImages).ToListAsync();
+        var Blogs = await _blogReadReopsitory
+                    .GetAll()
+                    .Include(x => x.BlogImages)
+                    .Include(x => x.Catagory)
+                    .ToListAsync();
         if (Blogs is null) throw new NotFoundException("Blog is Null");
+        var EntityToDto = _mapper.Map<List<BlogGetDTO>>(Blogs);
+        return EntityToDto;
     }
+
     public Task<BlogGetDTO> GetByIdAsync(Guid Id)
     {
         throw new NotImplementedException();

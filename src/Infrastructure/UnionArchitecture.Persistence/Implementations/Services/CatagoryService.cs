@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using UnionArchitecture.Aplication.Abstraction.Repository;
 using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
+using UnionArchitecture.Aplication.DTOs.Blog;
 using UnionArchitecture.Aplication.DTOs.Catagory;
 using UnionArchitecture.Domain.Entities;
 using UnionArchitecture.Persistence.Exceptions;
