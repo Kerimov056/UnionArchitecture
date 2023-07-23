@@ -47,11 +47,17 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddScoped<ITagReadRepository, TagReadRepository>();
         services.AddScoped<ISliderReadRepository, SliderReadRepository>();
         services.AddScoped<ISliderWriteRepository, SliderWriteRepository>();
+        services.AddScoped<IBlogReadReopsitory, BlogReadReopsitory>();
+        services.AddScoped<IBlogWriteReopsitory, BlogWriteReopsitory>();
+        services.AddScoped<IBlogImageReadReopsitory, BlogImageReadReopsitory>();
+        services.AddScoped<IBlogImageWriteReopsitory, BlogImageWriteReopsitory>();
 
         //Services
         services.AddScoped<ICatagoryService, CatagoryService>();
         services.AddScoped<IFlowerService, FlowerService>();
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<ISliderService, SliderService>();
+        services.AddScoped<IBlogService, BlogService>();
+        services.AddScoped<IBlogImageService, BlogImageService>();
     }
 }
