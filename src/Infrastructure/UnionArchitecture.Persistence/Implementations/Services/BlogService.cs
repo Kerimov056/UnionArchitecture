@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
 using UnionArchitecture.Aplication.DTOs.Blog;
 using UnionArchitecture.Domain.Entities;
+using UnionArchitecture.Persistence.Exceptions;
 
 namespace UnionArchitecture.Persistence.Implementations.Services;
 
@@ -42,9 +44,10 @@ public class BlogService : IBlogService
     }
 
 
-    public Task<List<BlogGetDTO>> GetAllAsync()
+    public async Task<List<BlogGetDTO>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var Blogs = await _blogReadReopsitory.GetAll().Include(x=>x.BlogImages).ToListAsync();
+        if (Blogs is null) throw new NotFoundException("Blog is Null");
     }
     public Task<BlogGetDTO> GetByIdAsync(Guid Id)
     {
