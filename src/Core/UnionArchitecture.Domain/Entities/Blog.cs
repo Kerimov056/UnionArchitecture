@@ -11,3 +11,4 @@ public class Blog : BaseEntity
     public Catagory Catagory { get; set; }
     public List<BlogImage> BlogImages { get; set; }
 }
+
