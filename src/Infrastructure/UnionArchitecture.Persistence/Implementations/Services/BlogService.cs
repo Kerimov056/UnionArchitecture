@@ -29,7 +29,7 @@ public class BlogService : IBlogService
     {
         var blog = await _blogReadReopsitory
             .GetByIdAsyncExpression(x => x.Title.ToLower().Equals(blogCreateDTO.title));
-        if (blog is not null) throw new NullReferenceException("Dubilcated Catagory Name!");
+        if (blog is not null) throw new DublicatedException("Dubilcated Catagory Name!");
         Blog NewBlog = _mapper.Map<Blog>(blogCreateDTO);
         await _blogWriteReopsitory.AddAsync(NewBlog);
         await _blogWriteReopsitory.SaveChangeAsync();

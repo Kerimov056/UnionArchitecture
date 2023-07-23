@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +8,7 @@ using UnionArchitecture.Aplication.Abstraction.Repository;
 using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
 using UnionArchitecture.Aplication.Validators.CatagoryValidators;
+using UnionArchitecture.Domain.Entities;
 using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.Implementations.Repositories;
 using UnionArchitecture.Persistence.Implementations.Repositories.EntityRepository;
@@ -59,5 +61,20 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddScoped<ISliderService, SliderService>();
         services.AddScoped<IBlogService, BlogService>();
         services.AddScoped<IBlogImageService, BlogImageService>();
+
+        //User 
+        services.AddIdentity<AppUser, IdentityRole>(Options =>
+        {
+            Options.User.RequireUniqueEmail = true;
+            Options.Password.RequireNonAlphanumeric = true;
+            Options.Password.RequiredLength = 8;
+            Options.Password.RequireDigit = true;
+            Options.Password.RequireUppercase = true;
+            Options.Password.RequireLowercase = true;
+
+            Options.Lockout.DefaultLockoutTimeSpan= TimeSpan.FromMinutes(3);
+            Options.Lockout.MaxFailedAccessAttempts = 3;
+            Options.Lockout.AllowedForNewUsers= true;
+        }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
     }
 }
