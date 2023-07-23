@@ -56,18 +56,32 @@ public class BlogService : IBlogService
         return EntityToDto;
     }
 
-    public Task<BlogGetDTO> GetByIdAsync(Guid Id)
+    public async Task<BlogGetDTO> GetByIdAsync(Guid Id)
     {
-        throw new NotImplementedException();
+        var Blogs = await _blogReadReopsitory
+                    .GetAll()
+                    .Include(x => x.BlogImages)
+                    .Include(x => x.Catagory)
+                    .FirstOrDefaultAsync(x=>x.Id==Id);
+        if (Blogs is null) throw new NotFoundException("Blog is null");
+        var EntityToDto = _mapper.Map<BlogGetDTO>(Blogs);
+        return EntityToDto; 
     }
 
-    public Task RemoveAsync(Guid Id)
+    public async Task RemoveAsync(Guid Id)
     {
-        throw new NotImplementedException();
+        var ByBlog = await _blogReadReopsitory.GetByIdAsync(Id);
+        if (ByBlog is null) throw new NotFoundException("Blog is null");
+        var DtoToEntity = _mapper.Map<Blog>(ByBlog);
+        _blogWriteReopsitory.Remove(DtoToEntity);
+        await _blogWriteReopsitory.SaveChangeAsync();
     }
-
-    public Task UpdateAsync(Guid Id, BlogUpdateDTo blogUpdateDTo)
+    public async Task UpdateAsync(Guid Id, BlogUpdateDTo blogUpdateDTo)
     {
-        throw new NotImplementedException();
+        var ByBlog = await _blogReadReopsitory.GetByIdAsync(Id);
+        if (ByBlog is null) throw new NotFoundException("Blog is null");
+        _mapper.Map(blogUpdateDTo,ByBlog);
+        _blogWriteReopsitory.Update(ByBlog);
+        await _blogWriteReopsitory.SaveChangeAsync();
     }
 }

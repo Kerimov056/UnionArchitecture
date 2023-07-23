@@ -11,7 +11,7 @@ namespace UnionArchitecture.UI.Controllers;
 public class BlogsController : ControllerBase
 {
     private readonly IBlogService _blogService;
-    public BlogsController(IBlogService blogService) => _blogService= blogService;
+    public BlogsController(IBlogService blogService) => _blogService = blogService;
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
