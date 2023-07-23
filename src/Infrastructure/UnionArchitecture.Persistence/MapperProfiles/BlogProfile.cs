@@ -9,7 +9,7 @@ public class BlogProfile:Profile
 	public BlogProfile()
 	{
 		CreateMap<Blog,BlogGetDTO>().ReverseMap();
-		CreateMap<Blog,(BlogCreateDTO,BlogImageGetDTO)>().ReverseMap();
+		CreateMap<Blog,BlogCreateDTO>().ReverseMap();
 		CreateMap<Blog,BlogUpdateDTo>().ReverseMap();
 	}
 }
