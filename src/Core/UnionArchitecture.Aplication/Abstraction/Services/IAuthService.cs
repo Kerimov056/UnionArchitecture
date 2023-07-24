@@ -5,4 +5,5 @@ namespace UnionArchitecture.Aplication.Abstraction.Services;
 public interface IAuthService
 {
     Task Register(RegisterDTO registerDTO);
+    Task<TokenResponseDTO> Login(LoginDTO loginDTO);
 }
