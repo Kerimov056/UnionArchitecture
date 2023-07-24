@@ -154,3 +154,13 @@ D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\ref\UnionArchitecture.UI.dll
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\BCrypt.Net-Next.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\UnionArchitecture.UI.staticwebassets.runtime.json
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll

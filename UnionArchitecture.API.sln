@@ -11,13 +11,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{77FF921A-AA67-448B-BC50-85B777BD5067}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionArchitecture.UI", "src\Presentation\UnionArchitecture.UI\UnionArchitecture.UI.csproj", "{4C3A0920-00A5-4935-8AEC-5966FDDA47E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnionArchitecture.UI", "src\Presentation\UnionArchitecture.UI\UnionArchitecture.UI.csproj", "{4C3A0920-00A5-4935-8AEC-5966FDDA47E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionArchitecture.Persistence", "src\Infrastructure\UnionArchitecture.Persistence\UnionArchitecture.Persistence.csproj", "{DF46B7CB-5D1F-4D96-9908-965A83805159}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnionArchitecture.Persistence", "src\Infrastructure\UnionArchitecture.Persistence\UnionArchitecture.Persistence.csproj", "{DF46B7CB-5D1F-4D96-9908-965A83805159}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionArchitecture.Domain", "src\Core\UnionArchitecture.Domain\UnionArchitecture.Domain.csproj", "{0EE3424A-DA26-40CC-89BA-18B98767ABC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnionArchitecture.Domain", "src\Core\UnionArchitecture.Domain\UnionArchitecture.Domain.csproj", "{0EE3424A-DA26-40CC-89BA-18B98767ABC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionArchitecture.Aplication", "src\Core\UnionArchitecture.Aplication\UnionArchitecture.Aplication.csproj", "{126E0493-190D-4086-969D-C82D052AEBFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnionArchitecture.Aplication", "src\Core\UnionArchitecture.Aplication\UnionArchitecture.Aplication.csproj", "{126E0493-190D-4086-969D-C82D052AEBFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AEEE8CE2-B8A7-4154-B89E-111833CF02F7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
