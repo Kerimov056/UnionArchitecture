@@ -21,34 +21,36 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-//builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(key:"JwtConfig"));
+//builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection(key: "JwtConfig"));
 
 //builder.Services.AddAuthentication(configureOptions: options =>
 //{
 //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 //    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-//    options.DefaultChallengeScheme= JwtBearerDefaults.AuthenticationScheme;
 //})
 //.AddJwtBearer(jwt =>
 //{
-//    var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection(key: "JwtConfig:Secret").Value);
+//    //var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection(key: "JwtConfig:Secret").Value);
+//    //jwt.SaveToken = true;
 
-//    jwt.SaveToken = true;
 //    jwt.TokenValidationParameters = new TokenValidationParameters()
 //    {
-//        ValidateIssuerSigningKey = true,
-//        IssuerSigningKey = new  SymmetricSecurityKey(key),
-//        ValidateIssuer = false,
-//        ValidateAudience = false,
-//        RequireExpirationTime= false,
+//        ValidIssuer = config["JwtSettings:Issuer"],
+//        ValidAudience = config["JwtSettings:Audience"],
+//        IssuerSigningKey = new SymmetricSecurityKey
+//        (Encoding.UTF8.GetBytes(config["JwtSettings:Key"]!)),
+//        ValidateIssuer = true,
+//        ValidateAudience = true,
 //        ValidateLifetime = true,
+//        ValidateIssuerSigningKey = true,
 //    };
 //});
 
 
 
-var app = builder.Build();
 
+var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
@@ -57,7 +59,6 @@ using (var scope = app.Services.CreateScope())
     await instance.RoleSeedAsync();
     await instance.UserSeedAsync();
 }
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -72,6 +73,9 @@ app.UseHttpsRedirection();
  
 app.UseAuthentication();
 app.UseAuthorization();
+
+//IConfiguration configuration = app.Configuration;
+//IWebHostEnvironment environment = app.Environment;
 
 app.MapControllers();
 
