@@ -6,7 +6,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using UnionArchitecture.Aplication.Abstraction.Services;
-using UnionArchitecture.Aplication.DTOs.AppUser;
 using UnionArchitecture.Aplication.DTOs.Auth;
 using UnionArchitecture.Domain.Entities.Identity;
 
