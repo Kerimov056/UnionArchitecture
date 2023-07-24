@@ -46,15 +46,46 @@ public class BlogService : IBlogService
 
     public async Task<List<BlogGetDTO>> GetAllAsync()
     {
-        var Blogs = await _blogReadReopsitory
+        var blogs = await _blogReadReopsitory
                     .GetAll()
                     .Include(x => x.BlogImages)
                     .Include(x => x.Catagory)
                     .ToListAsync();
-        if (Blogs is null) throw new NotFoundException("Blog is Null");
-        var EntityToDto = _mapper.Map<List<BlogGetDTO>>(Blogs);
-        return EntityToDto;
+
+        if (blogs is null) throw new NotFoundException("Blog is Null");
+
+        var dtoList = new List<BlogGetDTO>();
+
+        foreach (var blog in blogs)
+        {
+            var blogGetDTO = new BlogGetDTO
+            {
+                Id = blog.Id,
+                Title = blog.Title,
+                Description = blog.Description,
+                ImagePath = blog.ImagePath,
+                CatagoryId = blog.CatagoryId,
+                BlogImages = new List<BlogImageGetAllDTO>()
+            };
+
+            foreach (var blogImage in blog.BlogImages)
+            {
+                var blogImageGetAllDTO = new BlogImageGetAllDTO
+                {
+                    Id = blogImage.Id,
+                    Image = blogImage.ImagePath,
+                    BlogId = blogImage.BlogId
+                };
+
+                blogGetDTO.BlogImages.Add(blogImageGetAllDTO);
+            }
+
+            dtoList.Add(blogGetDTO);
+        }
+
+        return dtoList;
     }
+
 
     public async Task<BlogGetDTO> GetByIdAsync(Guid Id)
     {
@@ -62,10 +93,10 @@ public class BlogService : IBlogService
                     .GetAll()
                     .Include(x => x.BlogImages)
                     .Include(x => x.Catagory)
-                    .FirstOrDefaultAsync(x=>x.Id==Id);
+                    .FirstOrDefaultAsync(x => x.Id == Id);
         if (Blogs is null) throw new NotFoundException("Blog is null");
         var EntityToDto = _mapper.Map<BlogGetDTO>(Blogs);
-        return EntityToDto; 
+        return EntityToDto;
     }
 
     public async Task RemoveAsync(Guid Id)
@@ -80,7 +111,7 @@ public class BlogService : IBlogService
     {
         var ByBlog = await _blogReadReopsitory.GetByIdAsync(Id);
         if (ByBlog is null) throw new NotFoundException("Blog is null");
-        _mapper.Map(blogUpdateDTo,ByBlog);
+        _mapper.Map(blogUpdateDTo, ByBlog);
         _blogWriteReopsitory.Update(ByBlog);
         await _blogWriteReopsitory.SaveChangeAsync();
     }
