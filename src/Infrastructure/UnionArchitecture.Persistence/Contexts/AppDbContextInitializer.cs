@@ -29,19 +29,22 @@ public class AppDbContextInitializer   //bu claas onun ucundurku proqram ise dus
 		await _context.Database.MigrateAsync();
 	}
 
-	public async Task RoleSeed()
+	public async Task RoleSeedAsync()
 	{
 		foreach (var role in Enum.GetValues(typeof(Role)))
 		{
-            if (!await _roleManager.RoleExistsAsync(Role.Admin.ToString()))
+            if (!await _roleManager.RoleExistsAsync(role.ToString()))
             {
-                await _roleManager.CreateAsync(new() { Name = Role.Admin.ToString() });
+                await _roleManager.CreateAsync(new() { Name = role.ToString() });
             }
         }
 	}
 
 	public async Task UserSeedAsync()
 	{
+		var ByUser = await _userManager.FindByEmailAsync("superadmin@gmail.com");
+		if (ByUser is not null) throw new Exception(); //bura duzgun exception yaz
+
 		AppUser user = new()
 		{
 			UserName = _configuration["SuperAdminSettings:username"],

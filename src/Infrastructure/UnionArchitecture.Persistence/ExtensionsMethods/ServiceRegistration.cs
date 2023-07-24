@@ -61,6 +61,7 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddScoped<ISliderService, SliderService>();
         services.AddScoped<IBlogService, BlogService>();
         services.AddScoped<IBlogImageService, BlogImageService>();
+        services.AddScoped<IAuthService, AuthServic>();
 
         //User 
         services.AddIdentity<AppUser, IdentityRole>(Options =>

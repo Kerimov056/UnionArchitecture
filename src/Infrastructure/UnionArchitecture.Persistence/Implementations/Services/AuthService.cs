@@ -7,10 +7,10 @@ using UnionArchitecture.Persistence.Exceptions;
 
 namespace UnionArchitecture.Persistence.Implementations.Services;
 
-public class IAuthServic : IAuthService
+public class AuthServic : IAuthService
 {
     private readonly UserManager<AppUser> _userManager;
-    public IAuthServic(UserManager<AppUser> userManager) => _userManager = userManager;
+    public AuthServic(UserManager<AppUser> userManager) => _userManager = userManager;
     public async Task Register(RegisterDTO registerDTO)
     {
         AppUser user = new()

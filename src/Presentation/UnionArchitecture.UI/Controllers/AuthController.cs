@@ -1,13 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using System.Text;
-using UnionArchitecture.Aplication.Abstraction.Services;
-using UnionArchitecture.Aplication.DTOs.Auth;
-using UnionArchitecture.Domain.Entities.Identity;
 
 namespace UnionArchitecture.UI.Controllers;
 

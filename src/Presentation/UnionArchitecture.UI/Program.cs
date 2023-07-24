@@ -50,9 +50,12 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 
-using(var scope = app.Services.CreateScope())
+using (var scope = app.Services.CreateScope())
 {
     var instance = scope.ServiceProvider.GetRequiredService<AppDbContextInitializer>();
+    await instance.InitializeAsync();
+    await instance.RoleSeedAsync();
+    await instance.UserSeedAsync();
 }
 
 
