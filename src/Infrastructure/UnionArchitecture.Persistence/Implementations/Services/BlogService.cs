@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
 using UnionArchitecture.Aplication.DTOs.Blog;
-using UnionArchitecture.Domain.Entities;
 using UnionArchitecture.Persistence.Exceptions;
+using UnionArchitecture.Persistence.Migrations;
+using Blog = UnionArchitecture.Domain.Entities.Blog;
+
 
 namespace UnionArchitecture.Persistence.Implementations.Services;
 
@@ -95,8 +97,26 @@ public class BlogService : IBlogService
                     .Include(x => x.Catagory)
                     .FirstOrDefaultAsync(x => x.Id == Id);
         if (Blogs is null) throw new NotFoundException("Blog is null");
-        var EntityToDto = _mapper.Map<BlogGetDTO>(Blogs);
-        return EntityToDto;
+        //var EntityToDto = _mapper.Map<BlogGetDTO>(Blogs);
+        var bloggetDto = new BlogGetDTO
+        {
+            Id = Blogs.Id,
+            Title = Blogs.Title,
+            Description = Blogs.Description,
+            CatagoryId = Blogs.CatagoryId,
+            BlogImages = new List<BlogImageGetAllDTO>()
+        };
+        foreach (var blogImage in Blogs.BlogImages)
+        {
+            var blogImageGetAllDTO = new BlogImageGetAllDTO
+            {
+                Id = blogImage.Id,
+                Image = blogImage.ImagePath,
+                BlogId = blogImage.BlogId
+            };
+            bloggetDto.BlogImages.Add(blogImageGetAllDTO);
+        }
+        return bloggetDto;
     }
 
     public async Task RemoveAsync(Guid Id)
