@@ -79,7 +79,6 @@ D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.AssemblyInfoInputs.cache
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.AssemblyInfo.cs
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.csproj.CoreCompileInputs.cache
-D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.MvcApplicationPartsAssemblyInfo.cs
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.MvcApplicationPartsAssemblyInfo.cache
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.dll
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\refint\UnionArchitecture.UI.dll

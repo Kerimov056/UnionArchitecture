@@ -62,6 +62,7 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddScoped<IBlogService, BlogService>();
         services.AddScoped<IBlogImageService, BlogImageService>();
         services.AddScoped<IAuthService, AuthServic>();
+        services.AddScoped<IJwtService, JwtService>();
 
         //User 
         services.AddIdentity<AppUser, IdentityRole>(Options =>
@@ -78,5 +79,7 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
             Options.Lockout.AllowedForNewUsers= true;
             //Options.SignIn.RequireConfirmedEmail = false;
         }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+
+
     }
 }
