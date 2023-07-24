@@ -8,7 +8,7 @@ using UnionArchitecture.Aplication.Abstraction.Repository;
 using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
 using UnionArchitecture.Aplication.Validators.CatagoryValidators;
-using UnionArchitecture.Domain.Entities;
+using UnionArchitecture.Domain.Entities.Identity;
 using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.Implementations.Repositories;
 using UnionArchitecture.Persistence.Implementations.Repositories.EntityRepository;
@@ -75,6 +75,7 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
             Options.Lockout.DefaultLockoutTimeSpan= TimeSpan.FromMinutes(3);
             Options.Lockout.MaxFailedAccessAttempts = 3;
             Options.Lockout.AllowedForNewUsers= true;
-        }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+            //Options.SignIn.RequireConfirmedEmail = false;
+        }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
     }
 }

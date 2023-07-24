@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using UnionArchitecture.Domain.Entities;
+using UnionArchitecture.Domain.Entities.Identity;
 using UnionArchitecture.Persistence.Conficurations;
 
 namespace UnionArchitecture.Persistence.Contexts;
