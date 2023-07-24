@@ -15,6 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddPersistenceServices();
 
+builder.Services.AddScoped<AppDbContextInitializer>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -46,6 +48,13 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
+
+
+using(var scope = app.Services.CreateScope())
+{
+    var instance = scope.ServiceProvider.GetRequiredService<AppDbContextInitializer>();
+}
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
