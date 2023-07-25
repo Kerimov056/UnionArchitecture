@@ -1,3 +1,5 @@
-﻿namespace UnionArchitecture.Aplication.DTOs.Slider;
+﻿using Microsoft.AspNetCore.Http;
 
-public record SliderUptadeDTO(string imagePath, string title, string description);
+namespace UnionArchitecture.Aplication.DTOs.Slider;
+
+public record SliderUptadeDTO(IFormFile imagePath, string title, string description);

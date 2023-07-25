@@ -21,7 +21,7 @@ public class SlidersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(SliderCreateDTO sliderCreateDTO)
+    public async Task<IActionResult> Post([FromForm] SliderCreateDTO sliderCreateDTO)
     {
         await _sliderService.CreateAsync(sliderCreateDTO);
         return StatusCode((int)HttpStatusCode.Created);
@@ -42,7 +42,7 @@ public class SlidersController : ControllerBase
     }
 
     [HttpPut("{id:Guid}")]
-    public async Task<IActionResult> Uptade(Guid id, [FromBody] SliderUptadeDTO sliderUptadeDTO)
+    public async Task<IActionResult> Uptade(Guid id, [FromForm] SliderUptadeDTO sliderUptadeDTO)
     {
         await _sliderService.UpdateAsync(id, sliderUptadeDTO);
         return Ok();
