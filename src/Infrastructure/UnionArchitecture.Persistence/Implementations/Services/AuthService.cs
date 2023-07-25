@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -21,6 +23,7 @@ public class AuthServic : IAuthService
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IConfiguration _configuration;
     private readonly IJwtService _jwtService;
+
     public AuthServic(UserManager<AppUser> userManager,
                       SignInManager<AppUser> siginManager,
                       RoleManager<IdentityRole> roleManager,
@@ -56,12 +59,14 @@ public class AuthServic : IAuthService
         //    throw new Exception("User is inactive. Please contact support.");
         //}
 
+
+
+
         TokenResponseDTO token = _jwtService.CreateJwtToken(appUser);
         return token;
 
         //List<Claim> claims = new List<Claim>()
         //{
-        //    new Claim(ClaimTypes.Name,appUser.UserName),
         //    new Claim(ClaimTypes.NameIdentifier,appUser.Id),
         //    new Claim(ClaimTypes.Email,appUser.Email),
         //};

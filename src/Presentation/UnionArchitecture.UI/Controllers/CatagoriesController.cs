@@ -54,7 +54,7 @@ public class CatagoriesController : ControllerBase
     }
 
     /// <summary>
-    /// Remove Catagory id
+    /// 
     /// </summary>
     /// <param name="catagoryId"></param>
     /// <returns></returns>
