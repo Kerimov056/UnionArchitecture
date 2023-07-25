@@ -22,19 +22,19 @@ public class AuthServic : IAuthService
     private readonly SignInManager<AppUser> _siginManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IConfiguration _configuration;
-    private readonly IJwtService _jwtService;
+    private readonly ITokenHandler _tokenHandler;
 
     public AuthServic(UserManager<AppUser> userManager,
                       SignInManager<AppUser> siginManager,
                       RoleManager<IdentityRole> roleManager,
                       IConfiguration configuration,
-                      IJwtService jwtService)
+                      ITokenHandler tokenHandler)
     {
         _userManager = userManager;
         _siginManager = siginManager;
         _roleManager = roleManager;
         _configuration = configuration;
-        _jwtService = jwtService;
+        _tokenHandler = tokenHandler;
     }
 
     public async Task<TokenResponseDTO> Login(LoginDTO loginDTO)
@@ -60,33 +60,7 @@ public class AuthServic : IAuthService
         //}
 
 
-        List<Claim> claims = new List<Claim>()
-        {
-            new Claim(ClaimTypes.NameIdentifier,appUser.Id),
-            new Claim(ClaimTypes.Email,appUser.Email),
-            new Claim(ClaimTypes.Name,appUser.UserName)
-        };
-
-        var roles = await _userManager.GetRolesAsync(appUser);
-        foreach (var role in roles)
-        {
-            claims.Add(new Claim(ClaimTypes.Role, role));
-        }
-
-        SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
-        SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-        DateTime ExpireDate = DateTime.UtcNow.AddMinutes(1);
-        JwtSecurityToken jwt = new(
-            issuer: _configuration["JwtSettings:Issues"],
-            audience: _configuration["JwtSettings:Audience"],
-            claims: claims,
-            notBefore: DateTime.UtcNow,
-            expires: ExpireDate,
-            signingCredentials: credentials
-         );
-
-        var token = new JwtSecurityTokenHandler().WriteToken(jwt);
+      
         return new TokenResponseDTO(token, ExpireDate);
     }
 

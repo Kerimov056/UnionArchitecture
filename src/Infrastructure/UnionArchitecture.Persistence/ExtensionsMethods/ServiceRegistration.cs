@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using UnionArchitecture.Aplication.Abstraction.Repository;
 using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
@@ -62,8 +63,6 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddScoped<IBlogService, BlogService>();
         services.AddScoped<IBlogImageService, BlogImageService>();
         services.AddScoped<IAuthService, AuthServic>();
-        services.AddScoped<IJwtService, JwtService>();
-        //services.AddScoped<IGenerateToken, GenerateToken>();
 
 
         //User 
