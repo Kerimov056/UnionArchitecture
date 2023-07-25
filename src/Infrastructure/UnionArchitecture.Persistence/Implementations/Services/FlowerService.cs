@@ -61,7 +61,7 @@ public class FlowerService : IFlowerService
 
         FlowersImage flowersImage = new()
         {
-            ImagePath = createDTO.FlowersImageDTO.ImagePath,
+            ImagePath = createDTO.FlowersImageDTO.imagePath,
             FlowersId = newFlower.Id
         };
         await _flowersImageWriteRepository.AddAsync(flowersImage);
@@ -81,22 +81,53 @@ public class FlowerService : IFlowerService
 
     public async Task<List<FlowerDTO>> GetAllAsync()
     {
-        var flower = await _flowersReadRepository
+        var Flowers = await _flowersReadRepository
                 .GetAll()
                 .Include(x => x.FlowersDetails)
                 .Include(x => x.Images)
                 .Include(x => x.Flower_Tags)
                 .ThenInclude(x=>x.Tags)
                 .ToListAsync();
-        
-        var FlowerGetDto = _mapper.Map<List<FlowerDTO>>(flower);
 
-        return FlowerGetDto;
+        var flowers = new List<FlowerDTO>();
+
+        foreach (var flower in Flowers)
+        {
+            var FlowerDto = new FlowerDTO
+            {
+                Id = flower.Id,   //bura yarimiciq qaldiq.
+                Name = flower.Name,
+                OnImagePath = flower.ImagePath,
+                Price = flower.Price,
+                Description = flower.FlowersDetails.Description,
+                SKU = flower.FlowersDetails.SKU,
+                Weight = flower.FlowersDetails.Weight,
+                PowerFlowers = flower.FlowersDetails.PowerFlowers,
+                CatagoryId = flower.CatagoryId,
+                flowersImageDTOs = new List<FlowersImageDTO>(),
+                Flower_Tag = new List<Flower_Tag>()
+            };
+
+            foreach (var image in flower.Images)
+            {
+                var FlowerImage = new FlowersImageDTO
+                {
+                    imagePath = image.ImagePath,
+                };
+            }
+
+            foreach (var FloTag in flower.Flower_Tags)
+            {
+                var FlowerTags = new Flower_Tag
+                {
+                    FlowersId = FloTag.FlowersId,
+                    TagsId = FloTag.TagsId
+                };
+            }
+        }
+
+        return flowers;
     }
-    //.Include(x => x.FlowersDetails)
-    //.Include(x => x.Images)
-    //.Include(x => x.Flower_Tags)
-    //.ThenInclude(x => x.Tags)
     public async Task<FlowerDTO> GetByIdAsync(Guid id)
     {
         var Flower = await _flowersReadRepository
@@ -118,7 +149,7 @@ public class FlowerService : IFlowerService
             SKU = Flower.FlowersDetails.SKU,
             Weight = Flower.FlowersDetails.Weight,
             PowerFlowers = Flower.FlowersDetails.PowerFlowers,
-            OffImagePath = Flower.ImagePath,
+            //OffImagePath = Flower.ImagePath,
             CatagoryId = Flower.CatagoryId,
             //demeli burda biden Tag'in gostermek qalib.
         };

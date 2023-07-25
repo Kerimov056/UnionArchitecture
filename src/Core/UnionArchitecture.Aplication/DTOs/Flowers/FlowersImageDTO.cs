@@ -1,3 +1,6 @@
 ﻿namespace UnionArchitecture.Aplication.DTOs.Flowers;
 
-public record FlowersImageDTO(string ImagePath);
+public class FlowersImageDTO
+{
+    public string imagePath { get; set; }
+}

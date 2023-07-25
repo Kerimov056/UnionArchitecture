@@ -30,4 +30,8 @@
     <ProjectReference Include="..\..\Infrastructure\UnionArchitecture.Persistence\UnionArchitecture.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Upload\Files\" />
+  </ItemGroup>
+
 </Project>

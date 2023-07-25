@@ -192,7 +192,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasIndex("CatagoryId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Blogs", (string)null);
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.BlogImage", b =>
@@ -222,7 +222,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("BlogImages");
+                    b.ToTable("BlogImages", (string)null);
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Catagory", b =>
@@ -251,7 +251,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Catagories");
+                    b.ToTable("Catagories", (string)null);
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flower_Tag", b =>
@@ -269,7 +269,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("Flower_Tags");
+                    b.ToTable("Flower_Tags", (string)null);
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flowers", b =>
@@ -307,7 +307,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasIndex("CatagoryId");
 
-                    b.ToTable("Flowers");
+                    b.ToTable("Flowers", (string)null);
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.FlowersDetails", b =>
@@ -349,7 +349,7 @@ namespace UnionArchitecture.Persistence.Migrations
                     b.HasIndex("FlowersId")
                         .IsUnique();
 
-                    b.ToTable("FlowersDetails");
+                    b.ToTable("FlowersDetails", (string)null);
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.FlowersImage", b =>
@@ -379,7 +379,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasIndex("FlowersId");
 
-                    b.ToTable("FlowersImages");
+                    b.ToTable("FlowersImages", (string)null);
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Identity.AppUser", b =>
@@ -485,7 +485,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sliders");
+                    b.ToTable("Sliders", (string)null);
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Tags", b =>
@@ -510,7 +510,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
