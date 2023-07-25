@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 using System.Reflection.Emit;
@@ -12,6 +13,7 @@ namespace UnionArchitecture.UI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class CatagoriesController : ControllerBase
 {
     private readonly ICatagoryService _catagoryService;
