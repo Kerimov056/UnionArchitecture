@@ -56,42 +56,38 @@ public class AuthServic : IAuthService
         }
         //if (!appUser.IsActive)
         //{
-        //    throw new Exception("User is inactive. Please contact support.");
+        //    throw new UserBlockedException("User Blocked");
         //}
 
 
+        List<Claim> claims = new List<Claim>()
+        {
+            new Claim(ClaimTypes.NameIdentifier,appUser.Id),
+            new Claim(ClaimTypes.Email,appUser.Email),
+            new Claim(ClaimTypes.Name,appUser.UserName)
+        };
 
+        var roles = await _userManager.GetRolesAsync(appUser);
+        foreach (var role in roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
 
-        TokenResponseDTO token = _jwtService.CreateJwtToken(appUser);
-        return token;
+        SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
+        SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-        //List<Claim> claims = new List<Claim>()
-        //{
-        //    new Claim(ClaimTypes.NameIdentifier,appUser.Id),
-        //    new Claim(ClaimTypes.Email,appUser.Email),
-        //};
+        DateTime ExpireDate = DateTime.UtcNow.AddMinutes(1);
+        JwtSecurityToken jwt = new(
+            issuer: _configuration["JwtSettings:Issues"],
+            audience: _configuration["JwtSettings:Audience"],
+            claims: claims,
+            notBefore: DateTime.UtcNow,
+            expires: ExpireDate,
+            signingCredentials: credentials
+         );
 
-        //var roles = await _userManager.GetRolesAsync(appUser);
-        //foreach (var role in roles)
-        //{
-        //    claims.Add(new Claim(ClaimTypes.Role, role));
-        //}
-
-        //SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
-        //SigningCredentials signingCredentials = new SigningCredentials(securityKey,SecurityAlgorithms.HmacSha256);
-        //JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
-        //    issuer: _configuration["JwtSettings:Issues"],
-        //    audience: _configuration["JwtSettings:Audience"],
-        //    claims:claims,
-        //    notBefore: DateTime.UtcNow,
-        //    expires: DateTime.UtcNow.AddMinutes(1),
-        //    signingCredentials:signingCredentials
-        //    );
-
-        //JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-        //var token = handler.WriteToken(jwtSecurityToken);
-
-        //return new TokenResponseDTO(token, jwtSecurityToken.ValidTo);
+        var token = new JwtSecurityTokenHandler().WriteToken(jwt);
+        return new TokenResponseDTO(token, ExpireDate);
     }
 
     public async Task Register(RegisterDTO registerDTO)

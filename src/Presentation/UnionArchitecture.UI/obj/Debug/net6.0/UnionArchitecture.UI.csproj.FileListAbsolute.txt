@@ -163,4 +163,3 @@ D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
 D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
-D:\work2\Asp.Net API\UnionArchitecture\src\Presentation\UnionArchitecture.UI\obj\Debug\net6.0\UnionArchitecture.UI.MvcApplicationPartsAssemblyInfo.cs
