@@ -4,11 +4,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using UnionArchitecture.Aplication.Abstraction.Repository;
 using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
+using UnionArchitecture.Aplication.DTOs.Auth;
 using UnionArchitecture.Aplication.Validators.CatagoryValidators;
 using UnionArchitecture.Domain.Entities.Identity;
+using UnionArchitecture.Infrastructur.Services.Token;
 using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.Implementations.Repositories;
 using UnionArchitecture.Persistence.Implementations.Repositories.EntityRepository;
@@ -62,8 +68,7 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddScoped<IBlogService, BlogService>();
         services.AddScoped<IBlogImageService, BlogImageService>();
         services.AddScoped<IAuthService, AuthServic>();
-        services.AddScoped<IJwtService, JwtService>();
-        //services.AddScoped<IGenerateToken, GenerateToken>();
+        services.AddScoped<ITokenHandler, TokenHandlerr>();
 
 
         //User 
@@ -85,3 +90,4 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
 
     }
 }
+

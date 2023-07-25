@@ -3,7 +3,7 @@ using UnionArchitecture.Domain.Entities.Identity;
 
 namespace UnionArchitecture.Aplication.Abstraction.Services;
 
-public interface IJwtService
+public interface ITokenHandler
 {
-    TokenResponseDTO CreateJwtToken(AppUser appUser);
+    public Task<TokenResponseDTO> CreateAccessToken(int minutes,AppUser appUser);
 }

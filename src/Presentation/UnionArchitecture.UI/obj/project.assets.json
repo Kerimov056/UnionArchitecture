@@ -1315,6 +1315,19 @@
           "bin/placeholder/UnionArchitecture.Domain.dll": {}
         }
       },
+      "UnionArchitecture.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "UnionArchitecture.Aplication": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UnionArchitecture.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UnionArchitecture.Infrastructure.dll": {}
+        }
+      },
       "UnionArchitecture.Persistence/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1324,7 +1337,8 @@
           "FluentValidation.AspNetCore": "11.3.0",
           "Microsoft.EntityFrameworkCore": "6.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.20",
-          "UnionArchitecture.Aplication": "1.0.0"
+          "UnionArchitecture.Aplication": "1.0.0",
+          "UnionArchitecture.Infrastructure": "1.0.0"
         },
         "compile": {
           "bin/placeholder/UnionArchitecture.Persistence.dll": {}
@@ -3276,6 +3290,11 @@
       "type": "project",
       "path": "../../Core/UnionArchitecture.Domain/UnionArchitecture.Domain.csproj",
       "msbuildProject": "../../Core/UnionArchitecture.Domain/UnionArchitecture.Domain.csproj"
+    },
+    "UnionArchitecture.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../../Infrastructure/UnionArchitecture.Infrastructure/UnionArchitecture.Infrastructure.csproj",
+      "msbuildProject": "../../Infrastructure/UnionArchitecture.Infrastructure/UnionArchitecture.Infrastructure.csproj"
     },
     "UnionArchitecture.Persistence/1.0.0": {
       "type": "project",

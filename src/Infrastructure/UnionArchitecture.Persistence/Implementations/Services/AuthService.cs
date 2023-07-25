@@ -22,19 +22,19 @@ public class AuthServic : IAuthService
     private readonly SignInManager<AppUser> _siginManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IConfiguration _configuration;
-    private readonly IJwtService _jwtService;
+    private readonly ITokenHandler _tokenHandler;
 
     public AuthServic(UserManager<AppUser> userManager,
                       SignInManager<AppUser> siginManager,
                       RoleManager<IdentityRole> roleManager,
                       IConfiguration configuration,
-                      IJwtService jwtService)
+                      ITokenHandler tokenHandler)
     {
         _userManager = userManager;
         _siginManager = siginManager;
         _roleManager = roleManager;
         _configuration = configuration;
-        _jwtService = jwtService;
+        _tokenHandler = tokenHandler;
     }
 
     public async Task<TokenResponseDTO> Login(LoginDTO loginDTO)
@@ -56,42 +56,10 @@ public class AuthServic : IAuthService
         }
         //if (!appUser.IsActive)
         //{
-        //    throw new Exception("User is inactive. Please contact support.");
+        //    throw new UserBlockedException("User Blocked");
         //}
-
-
-
-
-        TokenResponseDTO token = _jwtService.CreateJwtToken(appUser);
-        return token;
-
-        //List<Claim> claims = new List<Claim>()
-        //{
-        //    new Claim(ClaimTypes.NameIdentifier,appUser.Id),
-        //    new Claim(ClaimTypes.Email,appUser.Email),
-        //};
-
-        //var roles = await _userManager.GetRolesAsync(appUser);
-        //foreach (var role in roles)
-        //{
-        //    claims.Add(new Claim(ClaimTypes.Role, role));
-        //}
-
-        //SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
-        //SigningCredentials signingCredentials = new SigningCredentials(securityKey,SecurityAlgorithms.HmacSha256);
-        //JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
-        //    issuer: _configuration["JwtSettings:Issues"],
-        //    audience: _configuration["JwtSettings:Audience"],
-        //    claims:claims,
-        //    notBefore: DateTime.UtcNow,
-        //    expires: DateTime.UtcNow.AddMinutes(1),
-        //    signingCredentials:signingCredentials
-        //    );
-
-        //JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-        //var token = handler.WriteToken(jwtSecurityToken);
-
-        //return new TokenResponseDTO(token, jwtSecurityToken.ValidTo);
+        return await _tokenHandler.CreateAccessToken(3,appUser);
+        //return new TokenResponseDTO(token, ExpireDate);
     }
 
     public async Task Register(RegisterDTO registerDTO)

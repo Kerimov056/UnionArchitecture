@@ -1114,6 +1114,19 @@
         "runtime": {
           "bin/placeholder/UnionArchitecture.Domain.dll": {}
         }
+      },
+      "UnionArchitecture.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "UnionArchitecture.Aplication": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UnionArchitecture.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UnionArchitecture.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -2681,6 +2694,11 @@
       "type": "project",
       "path": "../../Core/UnionArchitecture.Domain/UnionArchitecture.Domain.csproj",
       "msbuildProject": "../../Core/UnionArchitecture.Domain/UnionArchitecture.Domain.csproj"
+    },
+    "UnionArchitecture.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../UnionArchitecture.Infrastructure/UnionArchitecture.Infrastructure.csproj",
+      "msbuildProject": "../UnionArchitecture.Infrastructure/UnionArchitecture.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2691,7 +2709,8 @@
       "Microsoft.EntityFrameworkCore >= 6.0.20",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.20",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.20",
-      "UnionArchitecture.Aplication >= 1.0.0"
+      "UnionArchitecture.Aplication >= 1.0.0",
+      "UnionArchitecture.Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2723,6 +2742,9 @@
           "projectReferences": {
             "D:\\work2\\Asp.Net API\\UnionArchitecture\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj": {
               "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture\\src\\Core\\UnionArchitecture.Aplication\\UnionArchitecture.Aplication.csproj"
+            },
+            "D:\\work2\\Asp.Net API\\UnionArchitecture\\src\\Infrastructure\\UnionArchitecture.Infrastructure\\UnionArchitecture.Infrastructure.csproj": {
+              "projectPath": "D:\\work2\\Asp.Net API\\UnionArchitecture\\src\\Infrastructure\\UnionArchitecture.Infrastructure\\UnionArchitecture.Infrastructure.csproj"
             }
           }
         }

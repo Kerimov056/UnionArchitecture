@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\UnionArchitecture.Aplication\UnionArchitecture.Aplication.csproj" />
+    <ProjectReference Include="..\UnionArchitecture.Infrastructure\UnionArchitecture.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
