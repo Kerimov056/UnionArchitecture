@@ -58,10 +58,8 @@ public class AuthServic : IAuthService
         //{
         //    throw new UserBlockedException("User Blocked");
         //}
-
-
-      
-        return new TokenResponseDTO(token, ExpireDate);
+        return await _tokenHandler.CreateAccessToken(3,appUser);
+        //return new TokenResponseDTO(token, ExpireDate);
     }
 
     public async Task Register(RegisterDTO registerDTO)

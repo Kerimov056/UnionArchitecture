@@ -14,7 +14,8 @@
           "Microsoft.EntityFrameworkCore": "6.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.20",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.20",
-          "UnionArchitecture.Aplication": "1.0.0"
+          "UnionArchitecture.Aplication": "1.0.0",
+          "UnionArchitecture.Infrastructure": "1.0.0"
         },
         "runtime": {
           "UnionArchitecture.Persistence.dll": {}
@@ -622,6 +623,14 @@
         "runtime": {
           "UnionArchitecture.Domain.dll": {}
         }
+      },
+      "UnionArchitecture.Infrastructure/1.0.0": {
+        "dependencies": {
+          "UnionArchitecture.Aplication": "1.0.0"
+        },
+        "runtime": {
+          "UnionArchitecture.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -1071,6 +1080,11 @@
       "sha512": ""
     },
     "UnionArchitecture.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UnionArchitecture.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

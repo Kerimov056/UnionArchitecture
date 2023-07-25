@@ -8,6 +8,7 @@ using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.ExtensionsMethods;
 using UnionArchitecture.UI;
 using UnionArchitecture.UI.Middelewares;
+//using UnionArchitecture.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddPersistenceServices();
+//builder.Services.AddInfrastructureServices();
 
 builder.Services.AddScoped<AppDbContextInitializer>();
 

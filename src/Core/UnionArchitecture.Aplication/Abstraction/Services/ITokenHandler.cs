@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UnionArchitecture.Aplication.DTOs.Auth;
+using UnionArchitecture.Domain.Entities.Identity;
 
-namespace UnionArchitecture.Aplication.Abstraction.Services
+namespace UnionArchitecture.Aplication.Abstraction.Services;
+
+public interface ITokenHandler
 {
-    internal interface ITokenHandler
-    {
-    }
+    public Task<TokenResponseDTO> CreateAccessToken(int minutes,AppUser appUser);
 }
