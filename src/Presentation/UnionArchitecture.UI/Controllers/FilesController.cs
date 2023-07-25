@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
+using UnionArchitecture.Aplication.Abstraction.Services;
 
 namespace UnionArchitecture.UI.Controllers;
 
@@ -7,35 +9,27 @@ namespace UnionArchitecture.UI.Controllers;
 [ApiController]
 public class FilesController : ControllerBase
 {
+    private readonly IUploadFile _uploadFile;
+    public FilesController(IUploadFile uploadFile)
+    {
+        _uploadFile = uploadFile;
+    }
+
     [HttpPost]
     [Route("UploadFile")]
     public async Task<IActionResult> UploadFile(IFormFile formFile, CancellationToken cancellationToken)
     {
-        var result = await WriteFile(formFile);
+        var result = await _uploadFile.WriteFile(formFile);
         return Ok(result);
     }
 
-    private async Task<string> WriteFile(IFormFile file)
+    [HttpGet]
+    [Route("DownloadFile/{file}")]
+    public async Task<IActionResult> DownlandFile(string file)
     {
-        string filename = "";
-        var extension = "." + file.FileName.Split(".")[file.FileName.Split('.').Length - 1];
-        filename = DateTime.Now.Ticks.ToString() + extension;
-
-        var filepath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files");
-
-
-        if (!Directory.Exists(filepath))
-        {
-            Directory.CreateDirectory(filepath);
-        }
-
-
-        var exactpath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files", filename);
-        using (var stream = new FileStream(exactpath, FileMode.Create))
-        {
-            await file.CopyToAsync(stream);
-        }
-
-        return filename;
+        var fileData = await _uploadFile.DownlandFile(file);
+        return File(fileData, "application/octet-stream", file);
     }
 }
+
+        

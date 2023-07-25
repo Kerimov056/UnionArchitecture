@@ -15,6 +15,7 @@ using UnionArchitecture.Aplication.DTOs.Auth;
 using UnionArchitecture.Aplication.Validators.CatagoryValidators;
 using UnionArchitecture.Domain.Entities.Identity;
 using UnionArchitecture.Infrastructur.Services.Token;
+using UnionArchitecture.Infrastructure.Services;
 using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.Implementations.Repositories;
 using UnionArchitecture.Persistence.Implementations.Repositories.EntityRepository;
@@ -69,6 +70,7 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddScoped<IBlogImageService, BlogImageService>();
         services.AddScoped<IAuthService, AuthServic>();
         services.AddScoped<ITokenHandler, TokenHandlerr>();
+        services.AddScoped<IUploadFile, UploadFile>();
 
 
         //User 
@@ -84,9 +86,7 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
             Options.Lockout.DefaultLockoutTimeSpan= TimeSpan.FromMinutes(3);
             Options.Lockout.MaxFailedAccessAttempts = 3;
             Options.Lockout.AllowedForNewUsers= true;
-            //Options.SignIn.RequireConfirmedEmail = false;
         }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
-
 
     }
 }
