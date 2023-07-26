@@ -13,6 +13,7 @@ namespace UnionArchitecture.UI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+
 public class CatagoriesController : ControllerBase
 {
     private readonly ICatagoryService _catagoryService;
