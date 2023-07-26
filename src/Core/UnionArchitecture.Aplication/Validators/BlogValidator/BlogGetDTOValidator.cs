@@ -12,4 +12,3 @@ public class BlogGetDTOValidator: AbstractValidator<Blog>
         RuleFor(x => x.Description).NotNull().NotEmpty().MaximumLength(1500);
     }
 }
-//validatorlarda getdi qaldi repsotory servis sonra mapper sonrada alqoritimleri ve Controller

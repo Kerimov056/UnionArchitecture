@@ -30,6 +30,20 @@ public class FilesController : ControllerBase
         var fileData = await _uploadFile.DownlandFile(file);
         return File(fileData, "application/octet-stream", file);
     }
+
+    [HttpDelete("{fileName}")]
+    public async Task<IActionResult> DeleteFile(string pathOrContainerName, string fileName)
+    {
+        bool isDeleted = await _uploadFile.DeleteFileAsync(pathOrContainerName, fileName);
+        if (isDeleted)
+        {
+            return Ok("File Deleted");
+        }
+        else
+        {
+            return NotFound("Not Found File");
+        }
+    }
 }
 
         

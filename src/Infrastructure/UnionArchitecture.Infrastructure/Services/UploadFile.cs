@@ -6,6 +6,21 @@ namespace UnionArchitecture.Infrastructure.Services;
 
 public class UploadFile : IUploadFile
 {
+    public async Task<bool> DeleteFileAsync(string pathOrContainerName, string fileName)
+    {
+        pathOrContainerName = "Upload\\Files";
+        string filePath = Path.Combine(pathOrContainerName, fileName);
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public async Task<byte[]> DownlandFile(string file)
     {
         var filepath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files", file);
