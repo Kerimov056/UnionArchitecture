@@ -1,3 +1,5 @@
-﻿namespace UnionArchitecture.Aplication.DTOs.Blog;
+﻿using Microsoft.AspNetCore.Http;
 
-public record BlogUpdateDTo(string imagePath, string title, string description,Guid catagoryId, BlogImageGetDTO BlogImageGetDTO);
+namespace UnionArchitecture.Aplication.DTOs.Blog;
+
+public record BlogUpdateDTo(IFormFile imagePath, string title, string description,Guid catagoryId, BlogImageGetDTO BlogImageGetDTO);

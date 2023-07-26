@@ -1,6 +1,8 @@
-﻿namespace UnionArchitecture.Aplication.DTOs.Blog;
+﻿using Microsoft.AspNetCore.Http;
 
-public record BlogCreateDTO(string imagePath,
+namespace UnionArchitecture.Aplication.DTOs.Blog;
+
+public record BlogCreateDTO(IFormFile imagePath,
                             string title,
                             string description,
                             Guid CatagoryId,

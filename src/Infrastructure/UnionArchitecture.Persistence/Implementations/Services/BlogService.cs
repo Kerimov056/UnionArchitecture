@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
 using UnionArchitecture.Aplication.DTOs.Blog;
+using UnionArchitecture.Domain.Entities;
 using UnionArchitecture.Persistence.Exceptions;
 using UnionArchitecture.Persistence.Migrations;
 using Blog = UnionArchitecture.Domain.Entities.Blog;
@@ -15,16 +16,19 @@ public class BlogService : IBlogService
     private readonly IBlogReadReopsitory _blogReadReopsitory;
     public readonly IBlogWriteReopsitory _blogWriteReopsitory;
     private readonly IBlogImageService _blogImageService;
+    private readonly IUploadFile _uploadFile;
     public readonly IMapper _mapper;
     public BlogService(IBlogReadReopsitory blogReadReopsitory,
                        IBlogWriteReopsitory blogWriteReopsitory,
                        IMapper mapper,
-                       IBlogImageService blogImageService)
+                       IBlogImageService blogImageService,
+                       IUploadFile uploadFile)
     {
         _blogReadReopsitory = blogReadReopsitory;
         _blogWriteReopsitory = blogWriteReopsitory;
         _mapper = mapper;
         _blogImageService = blogImageService;
+        _uploadFile = uploadFile;
     }
 
     public async Task AddAsync(BlogCreateDTO blogCreateDTO)
@@ -33,6 +37,11 @@ public class BlogService : IBlogService
             .GetByIdAsyncExpression(x => x.Title.ToLower().Equals(blogCreateDTO.title));
         if (blog is not null) throw new DublicatedException("Dubilcated Catagory Name!");
         Blog NewBlog = _mapper.Map<Blog>(blogCreateDTO);
+        if (blogCreateDTO.imagePath != null && blogCreateDTO.imagePath.Length > 0)
+        {
+            var ImagePath = await _uploadFile.WriteFile(blogCreateDTO.imagePath);
+            NewBlog.ImagePath = ImagePath;
+        }
         await _blogWriteReopsitory.AddAsync(NewBlog);
         await _blogWriteReopsitory.SaveChangeAsync();
 
@@ -65,7 +74,7 @@ public class BlogService : IBlogService
                 Id = blog.Id,
                 Title = blog.Title,
                 Description = blog.Description,
-                ImagePath = blog.ImagePath,
+                //ImagePath = blog.ImagePath,
                 CatagoryId = blog.CatagoryId,
                 BlogImages = new List<BlogImageGetAllDTO>()
             };
@@ -132,7 +141,14 @@ public class BlogService : IBlogService
         var ByBlog = await _blogReadReopsitory.GetByIdAsync(Id);
         if (ByBlog is null) throw new NotFoundException("Blog is null");
         _mapper.Map(blogUpdateDTo, ByBlog);
+        if (blogUpdateDTo.imagePath != null && blogUpdateDTo.imagePath.Length > 0)
+        {
+            var ImagePath = await _uploadFile.WriteFile(blogUpdateDTo.imagePath);
+            ByBlog.ImagePath = ImagePath;
+        }
         _blogWriteReopsitory.Update(ByBlog);
         await _blogWriteReopsitory.SaveChangeAsync();
+
+        //await _blogImageService
     }
 }

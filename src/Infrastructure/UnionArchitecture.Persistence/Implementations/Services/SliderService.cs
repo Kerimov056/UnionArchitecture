@@ -12,19 +12,27 @@ public class SliderService : ISliderService
 {
     private readonly ISliderReadRepository _sliderReadRepository;
     private readonly ISliderWriteRepository _sliderWriteRepository;
+    private readonly IUploadFile _uploadFile;   
     private readonly IMapper _mapper;
     public SliderService(ISliderReadRepository sliderReadRepository,
                          ISliderWriteRepository sliderWriteRepository,
-                         IMapper mapper)
+                         IMapper mapper,
+                         IUploadFile uploadFile)
     {
         _sliderReadRepository = sliderReadRepository;
         _sliderWriteRepository = sliderWriteRepository;
+        _uploadFile = uploadFile;
         _mapper = mapper;
     }
 
     public async Task CreateAsync(SliderCreateDTO sliderCreateDTO)
     {
         var DtoToEntity = _mapper.Map<Slider>(sliderCreateDTO);
+        if (sliderCreateDTO.imagePath != null && sliderCreateDTO.imagePath.Length > 0)
+        {
+            var ImagePath = await _uploadFile.WriteFile(sliderCreateDTO.imagePath);
+            DtoToEntity.ImagePath = ImagePath;
+        }
         await _sliderWriteRepository.AddAsync(DtoToEntity);
         await _sliderWriteRepository.SaveChangeAsync();
     }
@@ -58,6 +66,11 @@ public class SliderService : ISliderService
         var BySlider = await _sliderReadRepository.GetByIdAsync(id);
         if (BySlider is null) throw new NullReferenceException();
         _mapper.Map(sliderUptadeDTO, BySlider);
+        if (sliderUptadeDTO.imagePath != null && sliderUptadeDTO.imagePath.Length > 0)
+        {
+            var ImagePath = await _uploadFile.WriteFile(sliderUptadeDTO.imagePath);
+            BySlider.ImagePath = ImagePath;
+        }
         _sliderWriteRepository.Update(BySlider);
         await _sliderWriteRepository.SaveChangeAsync();
     }
