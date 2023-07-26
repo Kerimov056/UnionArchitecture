@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using UnionArchitecture.Aplication.Abstraction.Services;
 using UnionArchitecture.Aplication.DTOs.Auth;
@@ -20,7 +21,7 @@ public class TokenHandlerr : ITokenHandler
         _configuration = configuration;
     }
 
-    public async Task<TokenResponseDTO> CreateAccessToken(int minutes, AppUser appUser)
+    public async Task<TokenResponseDTO> CreateAccessToken(int minutes, int refreshTokenMinutes,AppUser appUser)
     {
         List<Claim> claims = new List<Claim>()
         {
@@ -47,8 +48,17 @@ public class TokenHandlerr : ITokenHandler
             expires: ExpireDate,
             signingCredentials: credentials
          );
-
         var token = new JwtSecurityTokenHandler().WriteToken(jwt);
-        return new TokenResponseDTO(token, ExpireDate);
+        var refreshToken = GenerateRefreshToken();
+
+        return new TokenResponseDTO(token, ExpireDate, DateTime.UtcNow.AddMinutes(refreshTokenMinutes),refreshToken);
+    }
+
+    private string GenerateRefreshToken()
+    {
+        byte[] bytes = new byte[64];
+        var randomNumber = RandomNumberGenerator.Create();
+        randomNumber.GetBytes(bytes);
+        return Convert.ToBase64String(bytes);
     }
 }
