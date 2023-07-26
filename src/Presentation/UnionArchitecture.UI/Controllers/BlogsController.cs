@@ -21,7 +21,7 @@ public class BlogsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] BlogCreateDTO blogCreateDTO)
+    public async Task<IActionResult> Post([FromForm] BlogCreateDTO blogCreateDTO)
     {
         await _blogService.AddAsync(blogCreateDTO);
         return StatusCode((int)HttpStatusCode.Created);
@@ -35,7 +35,7 @@ public class BlogsController : ControllerBase
     }
 
     [HttpPut("{Id:Guid}")]
-    public async Task<IActionResult> Update(Guid Id,BlogUpdateDTo blogUpdateDTo)
+    public async Task<IActionResult> Update(Guid Id, [FromForm] BlogUpdateDTo blogUpdateDTo)
     {
         await _blogService.UpdateAsync(Id, blogUpdateDTo);
         return Ok();

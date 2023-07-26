@@ -1,4 +1,6 @@
-﻿namespace UnionArchitecture.Aplication.DTOs.Blog;
+﻿using Microsoft.AspNetCore.Http;
+
+namespace UnionArchitecture.Aplication.DTOs.Blog;
 
 public class NewBlogDto
 {
