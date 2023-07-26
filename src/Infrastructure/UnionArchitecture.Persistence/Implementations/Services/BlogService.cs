@@ -148,5 +148,7 @@ public class BlogService : IBlogService
         }
         _blogWriteReopsitory.Update(ByBlog);
         await _blogWriteReopsitory.SaveChangeAsync();
+
+        //await _blogImageService
     }
 }
