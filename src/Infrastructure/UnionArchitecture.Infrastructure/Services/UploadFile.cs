@@ -8,7 +8,6 @@ public class UploadFile : IUploadFile
 {
     public async Task<bool> DeleteFileAsync(string pathOrContainerName, string fileName)
     {
-        pathOrContainerName = "Upload\\Files";
         string filePath = Path.Combine(pathOrContainerName, fileName);
         if (File.Exists(filePath))
         {
@@ -26,6 +25,31 @@ public class UploadFile : IUploadFile
         var filepath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files", file);
 
         return await System.IO.File.ReadAllBytesAsync(filepath);
+    }
+
+    public async Task<List<string>> GetFilesAsync(string pathOrContainerName)
+    {
+        DirectoryInfo directoryInfo = new DirectoryInfo(pathOrContainerName);
+        if (!directoryInfo.Exists)
+        {
+            return new List<string>();
+        }
+
+        List<string> filesName = directoryInfo.GetFiles().Select(file =>file.Name).ToList();
+        return filesName;
+    }
+
+    public async Task<bool> HasFile(string pathOrContainerName, string fileName)
+    {
+        string filePath = Path.Combine(pathOrContainerName, fileName);
+        if (File.Exists(filePath))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public async Task<string> WriteFile(IFormFile file)

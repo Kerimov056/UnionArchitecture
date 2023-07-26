@@ -31,7 +31,7 @@ public class FilesController : ControllerBase
         return File(fileData, "application/octet-stream", file);
     }
 
-    [HttpDelete("{fileName}")]
+    [HttpDelete("DeleteFile/{pathOrContainerName}/{fileName}")]
     public async Task<IActionResult> DeleteFile(string pathOrContainerName, string fileName)
     {
         bool isDeleted = await _uploadFile.DeleteFileAsync(pathOrContainerName, fileName);
@@ -43,6 +43,20 @@ public class FilesController : ControllerBase
         {
             return NotFound("Not Found File");
         }
+    }
+
+    [HttpGet("{pathOrContainerName}")]
+    public async Task<IActionResult> GetFiles(string pathOrContainerName)
+    {
+        List<string> fileNames = await _uploadFile.GetFilesAsync(pathOrContainerName);
+        return Ok(fileNames);
+    }
+
+    [HttpGet("HasFile/{pathOrContainerName}/{fileName}")]
+    public async Task<IActionResult> HasFile(string pathOrContainerName, string fileName)
+    {
+        bool hasFile = await _uploadFile.HasFile(pathOrContainerName, fileName);
+        return Ok(hasFile);
     }
 }
 
