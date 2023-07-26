@@ -38,3 +38,10 @@ D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Pers
 D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.pdb
 D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.genruntimeconfig.cache
 D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\ref\UnionArchitecture.Persistence.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Persistence\bin\Debug\net6.0\en-US\UnionArchitecture.Persistence.resources.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Persistence\bin\Debug\net6.0\es-ES\UnionArchitecture.Persistence.resources.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.Resources.ErrorMessages.en-US.resources
+D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.Resources.ErrorMessages.es-ES.resources
+D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\UnionArchitecture.Persistence.csproj.GenerateResource.cache
+D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\en-US\UnionArchitecture.Persistence.resources.dll
+D:\work2\Asp.Net API\UnionArchitecture\src\Infrastructure\UnionArchitecture.Persistence\obj\Debug\net6.0\es-ES\UnionArchitecture.Persistence.resources.dll

@@ -13,17 +13,12 @@ namespace UnionArchitecture.UI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
 public class CatagoriesController : ControllerBase
 {
     private readonly ICatagoryService _catagoryService;
     public CatagoriesController(ICatagoryService catagoryService) => _catagoryService = catagoryService;
 
 
-    /// <summary>
-    /// Catagory GetAll
-    /// </summary>
-    /// <returns></returns>
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -31,11 +26,6 @@ public class CatagoriesController : ControllerBase
         return Ok(query);
     }
 
-    /// <summary>
-    /// GetByID Catagory
-    /// </summary>
-    /// <param name="Id"></param>
-    /// <returns></returns>
     [HttpGet("{Id}")]
     public async Task<IActionResult> GetByIdCatagory(Guid Id)
     {
@@ -43,11 +33,7 @@ public class CatagoriesController : ControllerBase
         return Ok(query);
     }
 
-    /// <summary>
-    /// Create Catagory
-    /// </summary>
-    /// <param name="CatagoryCreateDTO"></param>
-    /// <returns></returns>
+
     [HttpPost]
     public async Task<IActionResult> Post(CatagoryCreateDTO CatagoryCreateDTO)
     {
@@ -55,11 +41,7 @@ public class CatagoriesController : ControllerBase
         return StatusCode((int)HttpStatusCode.Created);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="catagoryId"></param>
-    /// <returns></returns>
+
     [HttpDelete("{catagoryId:Guid}")]
     public async Task<IActionResult> Remove(Guid catagoryId)
     {
@@ -67,12 +49,6 @@ public class CatagoriesController : ControllerBase
         return Ok();
     }
 
-    /// <summary>
-    /// Update Catagory Id
-    /// </summary>
-    /// <param name="catagoryId"></param>
-    /// <param name="catagoryUpdateDTO"></param>
-    /// <returns></returns>
     [HttpPut("{catagoryId:Guid}")]
     public async Task<IActionResult> Update(Guid catagoryId, [FromBody] CatagoryUpdateDTO catagoryUpdateDTO)
     {

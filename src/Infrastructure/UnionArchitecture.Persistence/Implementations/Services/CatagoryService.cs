@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using UnionArchitecture.Aplication.Abstraction.Repository;
 using UnionArchitecture.Aplication.Abstraction.Repository.IEntityRepository;
 using UnionArchitecture.Aplication.Abstraction.Services;
@@ -8,6 +9,7 @@ using UnionArchitecture.Aplication.DTOs.Catagory;
 using UnionArchitecture.Domain.Entities;
 using UnionArchitecture.Persistence.Exceptions;
 using UnionArchitecture.Persistence.Migrations;
+using UnionArchitecture.Persistence.Resources;
 using Catagory = UnionArchitecture.Domain.Entities.Catagory;
 
 namespace UnionArchitecture.Persistence.Implementations.Services;
@@ -16,12 +18,17 @@ public class CatagoryService : ICatagoryService
 {
     private readonly ICatagoryReadRepository _CatagoryReadRepository;
     private readonly ICatagoryWriteRepository _CatagoryWriteRepository;
+    //private readonly IStringLocalizer<ErrorMessages> _stringLocalizer;
     private readonly IMapper _mapper;
 
-    public CatagoryService(ICatagoryReadRepository catagoryReadRepository, ICatagoryWriteRepository catagoryWriteRepository, IMapper mapper)
+    public CatagoryService(ICatagoryReadRepository catagoryReadRepository,
+                           ICatagoryWriteRepository catagoryWriteRepository,
+                           //IStringLocalizer<ErrorMessages> stringLocalizer,
+                           IMapper mapper)
     {
         _CatagoryReadRepository = catagoryReadRepository;
         _CatagoryWriteRepository = catagoryWriteRepository;
+        //_stringLocalizer = stringLocalizer;
         _mapper = mapper;
     }
 
@@ -38,15 +45,35 @@ public class CatagoryService : ICatagoryService
     public async Task<List<CatagoryGetDTO>> GetAllAsync()
     {
         var catagories = await _CatagoryReadRepository.GetAll().ToListAsync();
-        var catagoryGetDTOs = _mapper.Map<List<CatagoryGetDTO>>(catagories);
-        return catagoryGetDTOs;
+        //var catagoryGetDTOs = _mapper.Map<List<CatagoryGetDTO>>(catagories);
+        //return catagoryGetDTOs; 
+        var dtoCatagory = new List<CatagoryGetDTO>();
+        foreach (var item in catagories)
+        {
+            var Catagory = new CatagoryGetDTO
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Description = item.Description
+            };
+            dtoCatagory.Add(Catagory);
+        }
+        return dtoCatagory;
     }
-    public async Task<CatagoryGetDTO> GetByIdAsync(Guid Id)
+    public async Task<CatagoryByGetDTO> GetByIdAsync(Guid Id)
     {
         var catogry = await _CatagoryReadRepository.GetByIdAsync(Id);
-        if (catogry is null) throw new NullReferenceException("There is no catagory with this name");
-        var EntityToDto = _mapper.Map<CatagoryGetDTO>(catogry);
-        return EntityToDto;
+        //string message = _stringLocalizer.GetString("NotFoundExceptionMsg");
+        //if (catogry is null) throw new NotFoundException("asdad");
+        var dtoCatagory = new CatagoryByGetDTO();
+
+        dtoCatagory.Id = catogry.Id;
+        dtoCatagory.Name = catogry.Name;
+        dtoCatagory.Description = catogry.Description;
+
+        return dtoCatagory;
+        //var EntityToDto = _mapper.Map<CatagoryGetDTO>(catogry);
+        //return EntityToDto;
     }
 
     public async Task RemoveAsync(Guid id)

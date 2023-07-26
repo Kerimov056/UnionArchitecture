@@ -8,15 +8,31 @@ using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.ExtensionsMethods;
 using UnionArchitecture.UI;
 using UnionArchitecture.UI.Middelewares;
-//using UnionArchitecture.Infrastructure;
+using UnionArchitecture.Infrastructure;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
+
+builder.Services.AddLocalization();
+
+List<CultureInfo> clutures = new()
+{
+    new CultureInfo("en-US"),
+    new CultureInfo("es-ES")
+};
+RequestLocalizationOptions localizationOptions = new()
+{
+    ApplyCurrentCultureToResponseHeaders= true,
+    SupportedCultures = clutures,
+    SupportedUICultures = clutures,
+};
+
+localizationOptions.SetDefaultCulture("en-US");
+
 builder.Services.AddPersistenceServices();
-//builder.Services.AddInfrastructureServices();
+builder.Services.AddInfrastructureServices();
 
 builder.Services.AddScoped<AppDbContextInitializer>();
 
@@ -62,6 +78,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //app.UserCustomExceptionHandler();
+app.UseRequestLocalization(localizationOptions);
 
 app.UseHttpsRedirection();
  
