@@ -796,6 +796,14 @@
         },
         "runtime": {
           "UnionArchitecture.Persistence.dll": {}
+        },
+        "resources": {
+          "en-US/UnionArchitecture.Persistence.resources.dll": {
+            "locale": "en-US"
+          },
+          "es-ES/UnionArchitecture.Persistence.resources.dll": {
+            "locale": "es-ES"
+          }
         }
       }
     }

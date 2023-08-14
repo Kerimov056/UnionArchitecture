@@ -16,13 +16,13 @@ public class BlogService : IBlogService
     private readonly IBlogReadReopsitory _blogReadReopsitory;
     public readonly IBlogWriteReopsitory _blogWriteReopsitory;
     private readonly IBlogImageService _blogImageService;
-    private readonly IUploadFile _uploadFile;
+    private readonly IStorageFile _uploadFile;
     public readonly IMapper _mapper;
     public BlogService(IBlogReadReopsitory blogReadReopsitory,
                        IBlogWriteReopsitory blogWriteReopsitory,
                        IMapper mapper,
                        IBlogImageService blogImageService,
-                       IUploadFile uploadFile)
+                       IStorageFile uploadFile)
     {
         _blogReadReopsitory = blogReadReopsitory;
         _blogWriteReopsitory = blogWriteReopsitory;
@@ -39,7 +39,7 @@ public class BlogService : IBlogService
         Blog NewBlog = _mapper.Map<Blog>(blogCreateDTO);
         if (blogCreateDTO.imagePath != null && blogCreateDTO.imagePath.Length > 0)
         {
-            var ImagePath = await _uploadFile.WriteFile(blogCreateDTO.imagePath);
+            var ImagePath = await _uploadFile.WriteFile("Upload\\Files", blogCreateDTO.imagePath);
             NewBlog.ImagePath = ImagePath;
         }
         await _blogWriteReopsitory.AddAsync(NewBlog);
@@ -143,7 +143,7 @@ public class BlogService : IBlogService
         _mapper.Map(blogUpdateDTo, ByBlog);
         if (blogUpdateDTo.imagePath != null && blogUpdateDTo.imagePath.Length > 0)
         {
-            var ImagePath = await _uploadFile.WriteFile(blogUpdateDTo.imagePath);
+            var ImagePath = await _uploadFile.WriteFile("Upload\\Files", blogUpdateDTo.imagePath);
             ByBlog.ImagePath = ImagePath;
         }
         _blogWriteReopsitory.Update(ByBlog);

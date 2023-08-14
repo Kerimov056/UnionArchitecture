@@ -9,27 +9,35 @@ namespace UnionArchitecture.UI.Controllers;
 [ApiController]
 public class FilesController : ControllerBase
 {
-    private readonly IUploadFile _uploadFile;
-    public FilesController(IUploadFile uploadFile)
+    private readonly IStorageFile _uploadFile;
+    public FilesController(IStorageFile uploadFile)
     {
         _uploadFile = uploadFile;
     }
 
     [HttpPost]
     [Route("UploadFile")]
-    public async Task<IActionResult> UploadFile(IFormFile formFile, CancellationToken cancellationToken)
+    public async Task<IActionResult> UploadFile(string pathOrContainerName,IFormFile formFile)
     {
-        var result = await _uploadFile.WriteFile(formFile);
+        var result = await _uploadFile.WriteFile(pathOrContainerName, formFile);
         return Ok(result);
     }
 
     [HttpGet]
-    [Route("DownloadFile/{file}")]
-    public async Task<IActionResult> DownlandFile(string file)
+    [Route("DownlandFile/{pathOrContainerName}/{file}")]
+    public async Task<IActionResult> DownlandFile(string pathOrContainerName, string file)
     {
-        var fileData = await _uploadFile.DownlandFile(file);
-        return File(fileData, "application/octet-stream", file);
+        var filepath = Path.Combine(Directory.GetCurrentDirectory(), pathOrContainerName, file);
+
+        var provider = new FileExtensionContentTypeProvider();
+        if (!provider.TryGetContentType(filepath, out var contenttype))
+        {
+            contenttype = "application/octet-stream";
+        }
+        var bytes = await System.IO.File.ReadAllBytesAsync(filepath);
+        return File(bytes, contenttype, Path.GetFileName(filepath));
     }
+
 
     [HttpDelete("DeleteFile/{pathOrContainerName}/{fileName}")]
     public async Task<IActionResult> DeleteFile(string pathOrContainerName, string fileName)
@@ -58,6 +66,20 @@ public class FilesController : ControllerBase
         bool hasFile = await _uploadFile.HasFile(pathOrContainerName, fileName);
         return Ok(hasFile);
     }
+
+    [HttpPost("{pathOrContainerName}")]
+    public async Task<IActionResult> Upload(string pathOrContainerName, [FromForm] IFormFileCollection files)
+    {
+        if (files == null || files.Count == 0)
+        {
+            return BadRequest("No files were uploaded.");
+        }
+
+        List<(string fileName, string pathOrContainerName)> uploadedFiles = await _uploadFile.UploadAsync(pathOrContainerName, files);
+
+        return Ok(uploadedFiles);
+    }
+
 }
 
         

@@ -8,17 +8,35 @@ using UnionArchitecture.Persistence.Contexts;
 using UnionArchitecture.Persistence.ExtensionsMethods;
 using UnionArchitecture.UI;
 using UnionArchitecture.UI.Middelewares;
-//using UnionArchitecture.Infrastructure;
+using UnionArchitecture.Infrastructure;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-builder.Services.AddPersistenceServices();
-//builder.Services.AddInfrastructureServices();
 
-builder.Services.AddScoped<AppDbContextInitializer>();
+builder.Services.AddLocalization();
+
+List<CultureInfo> clutures = new()
+{
+    new CultureInfo("en-US"),
+    new CultureInfo("es-ES")
+};
+RequestLocalizationOptions localizationOptions = new()
+{
+    ApplyCurrentCultureToResponseHeaders= true,
+    SupportedCultures = clutures,
+    SupportedUICultures = clutures,
+};
+
+localizationOptions.SetDefaultCulture("en-US");
+
+builder.Services.AddCors();
+
+builder.Services.AddPersistenceServices();
+builder.Services.AddInfrastructureServices();
+
+//builder.Services.AddScoped<AppDbContextInitializer>();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -46,13 +64,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var instance = scope.ServiceProvider.GetRequiredService<AppDbContextInitializer>();
-    await instance.InitializeAsync();
-    await instance.RoleSeedAsync();
-    await instance.UserSeedAsync();
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var instance = scope.ServiceProvider.GetRequiredService<AppDbContextInitializer>();
+//    await instance.InitializeAsync();
+//    await instance.RoleSeedAsync();
+//    await instance.UserSeedAsync();
+//}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -62,8 +80,15 @@ if (app.Environment.IsDevelopment())
 }
 
 //app.UserCustomExceptionHandler();
+app.UseRequestLocalization(localizationOptions);
 
 app.UseHttpsRedirection();
+
+app.UseCors(cors => cors
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .SetIsOriginAllowed(x=>true)
+            .AllowCredentials());
  
 app.UseAuthentication();
 app.UseAuthorization();

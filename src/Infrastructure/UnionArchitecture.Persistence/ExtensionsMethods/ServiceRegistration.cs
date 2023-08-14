@@ -21,10 +21,9 @@ using UnionArchitecture.Persistence.Implementations.Repositories;
 using UnionArchitecture.Persistence.Implementations.Repositories.EntityRepository;
 using UnionArchitecture.Persistence.Implementations.Services;
 using UnionArchitecture.Persistence.MapperProfiles;
-
 namespace UnionArchitecture.Persistence.ExtensionsMethods;
 
-public static class ServiceRegistration // burda butun serviceleri yazib program.cs'de yalniz methodun adini tanidiriq
+public static class ServiceRegistration // burda butun serviceleri yazib  program.cs'de yalniz methodun adini tanidiriq
 {
     public static void AddPersistenceServices(this IServiceCollection services)
     {   //DataBase
@@ -60,6 +59,8 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddScoped<IBlogWriteReopsitory, BlogWriteReopsitory>();
         services.AddScoped<IBlogImageReadReopsitory, BlogImageReadReopsitory>();
         services.AddScoped<IBlogImageWriteReopsitory, BlogImageWriteReopsitory>();
+        services.AddScoped<IBasketReadRepository, BasketReadRepository>();
+        services.AddScoped<IBasketWriteRepository, BasketWriteRepository>();
 
         //Services
         services.AddScoped<ICatagoryService, CatagoryService>();
@@ -69,8 +70,9 @@ public static class ServiceRegistration // burda butun serviceleri yazib program
         services.AddScoped<IBlogService, BlogService>();
         services.AddScoped<IBlogImageService, BlogImageService>();
         services.AddScoped<IAuthService, AuthServic>();
-        services.AddScoped<ITokenHandler, TokenHandlerr>();
-        services.AddScoped<IUploadFile, UploadFile>();
+        services.AddScoped<IBasketService, BasketService>();
+        services.AddScoped<ICarService, CarService>();
+        
 
 
         //User 

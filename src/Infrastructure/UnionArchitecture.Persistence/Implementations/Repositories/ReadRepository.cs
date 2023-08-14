@@ -21,7 +21,7 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity, new()
         {
             query = query.Include(inculde);
         }
-        return isTracking ? query: query.AsNoTracking();  // burda ise isTracking true'dursa query deyilse AsNoTracking()
+        return isTracking ? query : query.AsNoTracking();  // burda ise isTracking true'dursa query deyilse AsNoTracking()
     }
 
     public IQueryable<T> GetAllExpression(Expression<Func<T, bool>> expression, int Skip, int Take, bool isTracking = true, params string[] inculdes)
@@ -36,14 +36,14 @@ public class ReadRepository<T> : IReadRepository<T> where T : BaseEntity, new()
 
     public IQueryable<T> GetAllExpressionOrderBy(Expression<Func<T, bool>> expression, int Skip, int Take, Expression<Func<T, object>> expressionOrder, bool isOrdered = true, bool isTracking = true, params string[] inculdes)
     {
-        var query = Table.Where(expression).AsQueryable(); 
+        var query = Table.Where(expression).AsQueryable();
         query = isOrdered ? query.OrderBy(expressionOrder) : query.OrderByDescending(expressionOrder);
         query = query.Skip(Skip).Take(Take);  // bununda bir usedeki ile ferqi isOrderedd'di eger isOrdered trudursa orderby etsin deyilse orderbydesencding
-            foreach (var inculde in inculdes)
-            {
+        foreach (var inculde in inculdes)
+        {
             query = query.Include(inculde);
         }
-            return isTracking ? query : query.AsNoTracking();
+        return isTracking ? query : query.AsNoTracking();
     }
 
     public async Task<T> GetByIdAsync(Guid id)

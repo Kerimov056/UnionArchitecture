@@ -124,6 +124,8 @@ public class FlowerService : IFlowerService
                     TagsId = FloTag.TagsId
                 };
             }
+
+            flowers.Add(FlowerDto);
         }
 
         return flowers;

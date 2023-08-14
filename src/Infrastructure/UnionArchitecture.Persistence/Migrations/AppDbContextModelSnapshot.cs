@@ -155,6 +155,65 @@ namespace UnionArchitecture.Persistence.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Basket", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Baskets");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.BasketProduct", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BasketId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CarId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasketId");
+
+                    b.HasIndex("CarId");
+
+                    b.ToTable("BasketProducts");
+                });
+
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Blog", b =>
                 {
                     b.Property<Guid>("Id")
@@ -192,7 +251,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasIndex("CatagoryId");
 
-                    b.ToTable("Blogs", (string)null);
+                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.BlogImage", b =>
@@ -222,7 +281,35 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("BlogImages", (string)null);
+                    b.ToTable("BlogImages");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Car", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Marka")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Catagory", b =>
@@ -251,7 +338,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Catagories", (string)null);
+                    b.ToTable("Catagories");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flower_Tag", b =>
@@ -269,7 +356,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("Flower_Tags", (string)null);
+                    b.ToTable("Flower_Tags");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Flowers", b =>
@@ -307,7 +394,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasIndex("CatagoryId");
 
-                    b.ToTable("Flowers", (string)null);
+                    b.ToTable("Flowers");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.FlowersDetails", b =>
@@ -349,7 +436,7 @@ namespace UnionArchitecture.Persistence.Migrations
                     b.HasIndex("FlowersId")
                         .IsUnique();
 
-                    b.ToTable("FlowersDetails", (string)null);
+                    b.ToTable("FlowersDetails");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.FlowersImage", b =>
@@ -379,7 +466,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasIndex("FlowersId");
 
-                    b.ToTable("FlowersImages", (string)null);
+                    b.ToTable("FlowersImages");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Identity.AppUser", b =>
@@ -429,6 +516,12 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RefreshTokenExpration")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -485,7 +578,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sliders", (string)null);
+                    b.ToTable("Sliders");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Tags", b =>
@@ -510,7 +603,7 @@ namespace UnionArchitecture.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags", (string)null);
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -562,6 +655,36 @@ namespace UnionArchitecture.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Basket", b =>
+                {
+                    b.HasOne("UnionArchitecture.Domain.Entities.Identity.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.BasketProduct", b =>
+                {
+                    b.HasOne("UnionArchitecture.Domain.Entities.Basket", "Basket")
+                        .WithMany("basketProducts")
+                        .HasForeignKey("BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UnionArchitecture.Domain.Entities.Car", "Car")
+                        .WithMany()
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
+
+                    b.Navigation("Car");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Blog", b =>
@@ -636,6 +759,11 @@ namespace UnionArchitecture.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Flowers");
+                });
+
+            modelBuilder.Entity("UnionArchitecture.Domain.Entities.Basket", b =>
+                {
+                    b.Navigation("basketProducts");
                 });
 
             modelBuilder.Entity("UnionArchitecture.Domain.Entities.Blog", b =>
