@@ -12,12 +12,12 @@ public class SliderService : ISliderService
 {
     private readonly ISliderReadRepository _sliderReadRepository;
     private readonly ISliderWriteRepository _sliderWriteRepository;
-    private readonly IUploadFile _uploadFile;   
+    private readonly IStorageFile _uploadFile;   
     private readonly IMapper _mapper;
     public SliderService(ISliderReadRepository sliderReadRepository,
                          ISliderWriteRepository sliderWriteRepository,
                          IMapper mapper,
-                         IUploadFile uploadFile)
+                         IStorageFile uploadFile)
     {
         _sliderReadRepository = sliderReadRepository;
         _sliderWriteRepository = sliderWriteRepository;
@@ -30,7 +30,7 @@ public class SliderService : ISliderService
         var DtoToEntity = _mapper.Map<Slider>(sliderCreateDTO);
         if (sliderCreateDTO.imagePath != null && sliderCreateDTO.imagePath.Length > 0)
         {
-            var ImagePath = await _uploadFile.WriteFile(sliderCreateDTO.imagePath);
+            var ImagePath = await _uploadFile.WriteFile("Upload\\Files", sliderCreateDTO.imagePath);
             DtoToEntity.ImagePath = ImagePath;
         }
         await _sliderWriteRepository.AddAsync(DtoToEntity);
@@ -39,7 +39,7 @@ public class SliderService : ISliderService
 
     public async Task<List<SliderGetDTO>> GetAllAsync()
     {
-        var silder =  await _sliderReadRepository.GetAll().ToListAsync();
+        var silder = await _sliderReadRepository.GetAll().ToListAsync();
         if (silder is null) throw new NullReferenceException();
         var EntityToDto = _mapper.Map<List<SliderGetDTO>>(silder);
         return EntityToDto;
@@ -68,7 +68,7 @@ public class SliderService : ISliderService
         _mapper.Map(sliderUptadeDTO, BySlider);
         if (sliderUptadeDTO.imagePath != null && sliderUptadeDTO.imagePath.Length > 0)
         {
-            var ImagePath = await _uploadFile.WriteFile(sliderUptadeDTO.imagePath);
+            var ImagePath = await _uploadFile.WriteFile("Upload\\Files", sliderUptadeDTO.imagePath);
             BySlider.ImagePath = ImagePath;
         }
         _sliderWriteRepository.Update(BySlider);

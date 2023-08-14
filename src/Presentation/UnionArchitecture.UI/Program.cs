@@ -31,10 +31,12 @@ RequestLocalizationOptions localizationOptions = new()
 
 localizationOptions.SetDefaultCulture("en-US");
 
+builder.Services.AddCors();
+
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 
-builder.Services.AddScoped<AppDbContextInitializer>();
+//builder.Services.AddScoped<AppDbContextInitializer>();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -62,13 +64,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var instance = scope.ServiceProvider.GetRequiredService<AppDbContextInitializer>();
-    await instance.InitializeAsync();
-    await instance.RoleSeedAsync();
-    await instance.UserSeedAsync();
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var instance = scope.ServiceProvider.GetRequiredService<AppDbContextInitializer>();
+//    await instance.InitializeAsync();
+//    await instance.RoleSeedAsync();
+//    await instance.UserSeedAsync();
+//}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -81,6 +83,12 @@ if (app.Environment.IsDevelopment())
 app.UseRequestLocalization(localizationOptions);
 
 app.UseHttpsRedirection();
+
+app.UseCors(cors => cors
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .SetIsOriginAllowed(x=>true)
+            .AllowCredentials());
  
 app.UseAuthentication();
 app.UseAuthorization();

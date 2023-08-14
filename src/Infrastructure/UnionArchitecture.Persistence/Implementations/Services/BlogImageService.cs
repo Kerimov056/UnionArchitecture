@@ -13,13 +13,13 @@ public class BlogImageService : IBlogImageService
     private readonly IBlogImageReadReopsitory _blogImageReadReopsitory;
     private readonly IBlogImageWriteReopsitory _blogImageWriteReopsitory;
     private readonly IBlogReadReopsitory _blogReadReopsitory;
-    private readonly IUploadFile _uploadFile;
+    private readonly IStorageFile _uploadFile;
     private readonly IMapper _mapper;
     public BlogImageService(IBlogImageReadReopsitory blogImageReadReopsitory,
         IBlogImageWriteReopsitory blogImageWriteReopsitory,
         IBlogReadReopsitory blogReadReopsitory,
         IMapper mapper,
-        IUploadFile uploadFile)
+        IStorageFile uploadFile)
     {
         _blogImageReadReopsitory = blogImageReadReopsitory;
         _blogReadReopsitory = blogReadReopsitory;

@@ -7,7 +7,6 @@ public class Flowers : BaseEntity
     public string Name { get; set; }
     public string ImagePath { get; set; }
     public decimal Price { get; set; }
-
     //RelathionsShip
     public Guid CatagoryId { get; set; }
     public FlowersDetails FlowersDetails { get; set; }
